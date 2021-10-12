@@ -31,4 +31,7 @@
 
 de:
   hello: "Hello world"
+  welcome: "Willkommen!"
+  welcome_description: "Mit Simple Timekeeper können Sie einfach Arbeitszeiten erfassen. Probieren Sie es kostenlos aus!"
+  welcome_keywords: "Zeiterfassung, Arbeitsstunden, Arbeitszeit"
   application_name: "Simple Timekeeper"
