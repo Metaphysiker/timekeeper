@@ -30,8 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 de:
-  hello: "Hello world"
+  hello: "Hallo Welt!"
   welcome: "Willkommen!"
-  welcome_description: "Mit Simple Timekeeper können Sie einfach Arbeitszeiten erfassen. Probieren Sie es kostenlos aus!"
+  welcome_description: "Mit Simple Timekeeper einfach Arbeitszeiten erfassen. Kostenlos ausprobieren!"
   welcome_keywords: "Zeiterfassung, Arbeitsstunden, Arbeitszeit"
   application_name: "Simple Timekeeper"
