@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#welcome'
   get 'static_pages/welcome'
+  get 'static_pages/pricing', as: "pricing"
 
   #test
   get 'test/generate_json_of_translation'
