@@ -1,10 +1,7 @@
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { cy: "form_for_registration" }}) |f| %>
+<%= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { data: { cy: "form_for_registration" }} do |f| %>
 <h5><u><%= t("signup") %></u></h5>
 <p>
   <%= f.input :email%>
-  <br />
-
-  <%= f.input :are_you_in_mentoring50, as: :radio_buttons, collection: [["yes", 'Ja'], ["no", 'Nein']], label_method: :second, value_method: :first, label: false,item_wrapper_class: "mr-2", item_label_class: "px-2" %>
   <hr>
   <%= f.input :password %>
   <br />
