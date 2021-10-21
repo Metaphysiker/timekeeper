@@ -1,0 +1,23 @@
+<h5><u><%= t("login") %></u></h5>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: "user_login", data: { cy: "form_for_login" }}) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: false,
+                autofocus: false,
+                input_html: { autocomplete: "email" } %>
+                <br>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+                <br>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <br>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t("login"), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%#= render "devise/shared/links" %>

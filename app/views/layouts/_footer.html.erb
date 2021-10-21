@@ -1,4 +1,6 @@
 <footer class="footer mt-auto">
+  <div class="container-fluid bg-primary">
+
   <p>
     <% if user_signed_in? %>
   <%= t("logged_in_as") %> <u><%= current_user.email %></u><br />
@@ -14,4 +16,5 @@
   <%= link_to t('signup'), new_user_registration_path, class:"text-white" %>
 <% end %>
   </p>
+  </div>
 </footer>
