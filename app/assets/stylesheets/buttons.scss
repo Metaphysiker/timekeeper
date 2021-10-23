@@ -27,10 +27,12 @@
 
 .primary-button {
   //@extend .rounded !optional;
-  //@extend .btn !optional;
+  @extend .btn !optional;
   //@extend .btn-a-color !optional;
+  //@extend .rounded !optional;
   @extend .bg-a-color !optional;
   color: white;
+  font-size: 1.2rem;
   font-weight: bold;
   @extend .my-2 !optional;
   //@extend .text-e-color !optional;
