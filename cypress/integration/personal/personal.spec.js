@@ -17,6 +17,11 @@ describe('welcomes user', () => {
       cy.signup(users[0]);
     });
 
+//    cy.fixture('locales/de.json').should((de) => {
+//      cy.contains(de["de"]["welcome"]).should("be.visible")
+//      cy.contains(de["de"]["welcome_description"]).should("be.visible")
+//    })
+
     cy.logout()
 
     })
