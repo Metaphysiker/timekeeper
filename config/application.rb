@@ -12,6 +12,7 @@ module Timekeeper
     config.load_defaults 6.1
 
     config.i18n.default_locale = :de
+    #I18n.default_locale = :de
 
 
     # Configuration for the application, engines, and railties goes here.

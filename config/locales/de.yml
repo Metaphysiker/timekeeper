@@ -42,3 +42,7 @@ de:
   logout: "Abmelden"
   edit_account: "Account bearbeiten"
   delete_account: "Account löschen"
+  errors:
+    messages:
+      blank: "muss ausgefüllt werden"
+      taken: "ist bereits vergeben"
