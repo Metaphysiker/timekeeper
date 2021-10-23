@@ -6,7 +6,7 @@ Cypress.Commands.add('signup', (user) => {
     cy.get('#user_password_confirmation').type("password")
     cy.root().submit()
   })
-  cy.contains('Sie haben sich erfolgreich registriert!')
+  cy.contains('Sie haben sich erfolgreich registriert.')
 
   cy.fixture('locales/de.json').should((de) => {
     cy.contains(de["de"]["logged_in_as"] + " " + user["email"]);

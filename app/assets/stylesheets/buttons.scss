@@ -1,0 +1,26 @@
+@import "variables";
+
+@mixin btn-color-modifiers {
+  @each $name, $hex in $main-colors {
+    &-#{$name} {
+      color: $white;
+      background-color: $hex !important;
+      font-size: 1.2rem;
+      font-weight: bold;
+      &:hover{
+        color: #ffffff;
+        filter: brightness(1.1);
+        transform: scale(1.09);
+      }
+    }
+
+    .badge {
+      color: $hex;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.btn {
+  @include btn-color-modifiers;
+}

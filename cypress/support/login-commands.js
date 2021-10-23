@@ -11,3 +11,8 @@ Cypress.Commands.add('login', (user) => {
     cy.contains(de["de"]["logged_in_as"] + " " + user["email"]);
   });
 })
+
+Cypress.Commands.add('logout', () => {
+  cy.get("[data-cy=logout]").click()
+  cy.contains('Erfolgreich abgemeldet.');
+})

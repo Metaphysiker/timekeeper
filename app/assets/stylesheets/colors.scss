@@ -1,10 +1,4 @@
-$main-colors: (
-  a-color: #026670,
-  b-color: #9FEDD7,
-  c-color: #FEF9C7,
-  d-color: #FCE181,
-  e-color: #EDEAE5,
-);
+@import "variables";
 
 @mixin background-color-modifiers {
   @each $name, $hex in $main-colors {
@@ -23,26 +17,7 @@ $main-colors: (
   }
 }
 
-@mixin btn-color-modifiers {
-  @each $name, $hex in $main-colors {
-    &-#{$name} {
-      color: $white;
-      background-color: $hex !important;
-      font-size: 1.2rem;
-      font-weight: bold;
-      &:hover{
-        color: #ffffff;
-        filter: brightness(1.1);
-        transform: scale(1.09);
-      }
-    }
 
-    .badge {
-      color: $hex;
-      background-color: #ffffff;
-    }
-  }
-}
 
 .bg {
   @include background-color-modifiers;
@@ -50,8 +25,4 @@ $main-colors: (
 
 .text {
   @include text-color-modifiers;
-}
-
-.btn {
-  @include btn-color-modifiers;
 }

@@ -6,6 +6,7 @@ ruby '3.0.2'
 gem 'devise-i18n'
 gem 'simple_form'
 gem 'devise'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'meta-tags'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

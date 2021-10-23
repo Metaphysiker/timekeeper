@@ -7,6 +7,30 @@ class TestController < ApplicationController
       head :ok
     end
 
+    def create_users
+      10.times do
+        create_fake_user("no_role")
+      end
+
+      File.write("cypress/fixtures/users.json", User.all.to_json)
+      head :ok
+    end
+
+    def destroy_all_users
+      User.destroy_all
+      head :ok
+    end
+
+    private
+
+    def create_fake_user(role)
+      User.create(
+        email: Faker::Internet.email,
+        password: "password",
+        password_confirmation: "password"
+      )
+    end
+
 
   end
 end
