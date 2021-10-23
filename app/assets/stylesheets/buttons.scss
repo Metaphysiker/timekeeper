@@ -3,24 +3,56 @@
 @mixin btn-color-modifiers {
   @each $name, $hex in $main-colors {
     &-#{$name} {
-      color: $white;
+      //color: $white;
       background-color: $hex !important;
       font-size: 1.2rem;
       font-weight: bold;
       &:hover{
-        color: #ffffff;
-        filter: brightness(1.1);
-        transform: scale(1.09);
+        //color: #ffffff;
+        filter: brightness(1.05);
+        transform: scale(1.05);
       }
     }
 
-    .badge {
-      color: $hex;
-      background-color: #ffffff;
-    }
+    //.badge {
+    //  color: $hex;
+    //  background-color: #ffffff;
+    //}
   }
 }
 
 .btn {
   @include btn-color-modifiers;
+}
+
+.primary-button {
+  //@extend .rounded !optional;
+  //@extend .btn !optional;
+  //@extend .btn-a-color !optional;
+  @extend .bg-a-color !optional;
+  color: white;
+  font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+  &:hover{
+    color: #ffffff;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+}
+
+.secondary-button {
+  //@extend .rounded !optional;
+  @extend .btn !optional;
+  //@extend .btn-a-color !optional;
+  @extend .bg-f-color !optional;
+  color: white;
+  font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+  &:hover{
+    color: #ffffff;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
 }

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :work_times
   devise_for :users
   root 'static_pages#welcome'
   get 'static_pages/welcome'
