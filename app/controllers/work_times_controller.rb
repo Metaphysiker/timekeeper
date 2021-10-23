@@ -1,5 +1,6 @@
 class WorkTimesController < ApplicationController
   before_action :set_work_time, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /work_times or /work_times.json
   def index
