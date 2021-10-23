@@ -17,6 +17,10 @@ class TestController < ApplicationController
     end
 
     def destroy_all_users
+      User.all.each do |user|
+        sign_out user
+      end
+      
       User.destroy_all
       head :ok
     end
