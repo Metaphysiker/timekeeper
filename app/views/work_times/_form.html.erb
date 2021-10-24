@@ -1,5 +1,3 @@
-<% user = user.blank? ? current_user : user.id %>
-
 <%= simple_form_for(@work_time) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -7,7 +5,8 @@
   <div class="form-inputs">
     <%= f.input :task, placeholder: WorkTime.human_attribute_name("task_placeholder") %>
     <%= f.input :minutes, placeholder: WorkTime.human_attribute_name("minutes_placeholder") %>
-    <%= f.hidden_field :user_id, value: user.id %>
+
+    <%= f.hidden_field :account_id, value: account.id %>
   </div>
 
   <div class="form-actions">

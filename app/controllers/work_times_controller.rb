@@ -1,6 +1,6 @@
 class WorkTimesController < ApplicationController
   before_action :set_work_time, only: %i[ show edit update destroy ]
-  after_action :verify_authorized
+  #after_action :verify_authorized
 
   # GET /work_times or /work_times.json
   def index
@@ -65,6 +65,6 @@ class WorkTimesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_time_params
-      params.require(:work_time).permit(:task, :minutes)
+      params.require(:work_time).permit(:task, :minutes, :account_id)
     end
 end

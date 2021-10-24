@@ -3,7 +3,7 @@ class CreateWorkTimes < ActiveRecord::Migration[6.1]
     create_table :work_times do |t|
       t.string :task
       t.integer :minutes
-      t.belongs_to :author
+      t.belongs_to :account
 
       t.timestamps
     end
