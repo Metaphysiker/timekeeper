@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
   #has_many :work_times
   has_many :accounts
+
+  after_create :add_personal_account_to_user
+
+  private
+
+  def add_personal_account_to_user
+    account = Account.create(user_id: self.id, name: "personal")
+  end
+
 end
