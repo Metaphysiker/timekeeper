@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :accounts do
     collection do
-      get 'my_accounts'
+      get 'my_accounts', as: "my_accounts"
     end
   end
   resources :work_times

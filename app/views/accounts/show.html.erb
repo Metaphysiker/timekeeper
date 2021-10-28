@@ -4,6 +4,14 @@
   <strong>Name:</strong>
   <%= @account.name %>
 </p>
+<p>
+  <%= render 'work_times/form', work_time: WorkTime.new, account: @account %>
+</p>
+<p>
+  <% WorkTime.where(account_id: @account.id).each do |work_time| %>
+    <%= work_time.task %>, <%= work_time.minutes %><br />
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
