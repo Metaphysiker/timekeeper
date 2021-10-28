@@ -1,0 +1,4 @@
+<h1><%= t("my_accounts") %></h1>
+<% @user.accounts.each do |account| %>
+  <%= account.name %>
+<% end %>

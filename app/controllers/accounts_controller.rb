@@ -1,6 +1,14 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy ]
 
+  def my_accounts
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+  end
+  
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all

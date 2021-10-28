@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :roles
-  resources :accounts
+  resources :accounts do
+    collection do
+      get 'my_accounts'
+    end
+  end
   resources :work_times
   devise_for :users
   root 'static_pages#welcome'
