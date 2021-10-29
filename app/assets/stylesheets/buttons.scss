@@ -58,3 +58,18 @@
     transform: scale(1.05);
   }
 }
+
+.account-button {
+  @extend .bg-d-color !optional;
+  @extend .rounded !optional;
+  @extend .py-4 !optional;
+  @extend .my-2 !optional;
+  @extend .text-decoration-none !optional;
+  color: black;
+
+  &:hover{
+    color: black;
+    filter: brightness(0.9);
+    transform: scale(1.02);
+  }
+}
