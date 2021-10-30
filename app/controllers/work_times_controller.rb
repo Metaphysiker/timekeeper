@@ -26,7 +26,7 @@ class WorkTimesController < ApplicationController
 
     respond_to do |format|
       if @work_time.save
-        format.html { redirect_to @work_time, notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_created_successfully")}" }
+        format.html { redirect_to account_path(@work_time.account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_created_successfully")}" }
         format.json { render :show, status: :created, location: @work_time }
       else
         format.html { render :new, status: :unprocessable_entity }

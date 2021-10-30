@@ -1,6 +1,4 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Account:</strong>
   <%= @account.name %>
@@ -8,11 +6,30 @@
 <p>
   <%= render 'work_times/form', work_time: WorkTime.new, account: @account %>
 </p>
-<p>
-  <% WorkTime.where(account_id: @account.id).each do |work_time| %>
-    <%= work_time.task %>, <%= work_time.minutes %><br />
-  <% end %>
-</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"><%= WorkTime.human_attribute_name("created_at") %></th>
+      <th scope="col"><%= WorkTime.human_attribute_name("task") %></th>
+      <th scope="col"><%= WorkTime.human_attribute_name("minutes") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% WorkTime.where(account_id: @account.id).each do |work_time| %>
+    <tr>
+      <td><%= l(work_time.created_at, format: :short) %></td>
+      <td><%= work_time.task %></td>
+      <td><%= work_time.minutes %></td>
+    </tr>
+    <% end %>
+    <tr class="table-secondary">
+      <td></td>
+      <td>Total: </td>
+      <td><%= WorkTime.where(account_id: @account.id).sum(:minutes)  %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>

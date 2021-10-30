@@ -48,3 +48,6 @@ de:
     messages:
       blank: "muss ausgefüllt werden"
       taken: "ist bereits vergeben"
+  time:
+    formats:
+      short: "%d.%m.%Y - %H:%M"

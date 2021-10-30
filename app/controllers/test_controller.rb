@@ -16,6 +16,7 @@ class TestController < ApplicationController
         create_fake_user("no_role")
       end
 
+      #File.delete("cypress/fixtures/users.json")
       File.write("cypress/fixtures/users.json", User.all.to_json)
       head :ok
     end
@@ -61,7 +62,7 @@ class TestController < ApplicationController
 
     def create_fake_user(role)
       User.create(
-        email: Faker::Internet.email,
+        email: Faker::Internet.unique.email,
         password: "password",
         password_confirmation: "password"
       )
