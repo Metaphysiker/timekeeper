@@ -23,7 +23,6 @@ class WorkTimesController < ApplicationController
   # POST /work_times or /work_times.json
   def create
     @work_time = WorkTime.new(work_time_params)
-
     respond_to do |format|
       if @work_time.save
         format.html { redirect_to account_path(@work_time.account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_created_successfully")}" }

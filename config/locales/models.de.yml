@@ -12,7 +12,10 @@ de:
         email: "e-Mail"
         password: "Passwort"
       work_time:
-        task: "Arbeit"
+        created_at: "Datum"
+        in_hours: "in Stunden"
+        task: "Aufgabe"
+        tasks: "Aufgaben"
         task_placeholder: "z.B. Kunden kontaktiert, Rechnungen verschickt, Mauer repariert"
         minutes: "Minuten"
         minutes_placeholder: "z.B. 35"

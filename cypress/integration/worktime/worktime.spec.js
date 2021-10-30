@@ -23,4 +23,29 @@ describe('working_time', () => {
       })
 
     })
+
+    it('submits an empty worktime and expects error messages', () => {
+
+      cy.sign_up_and_go_to_personal_account();
+
+      cy.get("[data-cy=work_time_form]").within(($form) => {
+        //cy.get('#work_time_task').type(work_time["task"]);
+        //cy.get('#work_time_minutes').type(work_time["minutes"]);
+        cy.root().submit()
+      })
+
+      cy.fixture('locales/models.de.json').should((models_de) => {
+
+        cy.fixture('locales/de.json').should((de) => {
+          cy.contains(models_de["de"]["activerecord"]["attributes"]["work_time"]["task"] + " " + de["de"]["errors"]["messages"]["blank"]).should("be.visible");
+          cy.contains(models_de["de"]["activerecord"]["attributes"]["work_time"]["minutes"] + " " + de["de"]["errors"]["messages"]["not_a_number"]).should("be.visible");
+          cy.contains(models_de["de"]["activerecord"]["attributes"]["work_time"]["minutes"] + " " + de["de"]["errors"]["messages"]["blank"]).should("be.visible");
+        })
+
+      });
+
+      cy.logout();
+
+    });
+
 });

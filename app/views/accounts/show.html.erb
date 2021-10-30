@@ -13,6 +13,7 @@
       <th scope="col"><%= WorkTime.human_attribute_name("created_at") %></th>
       <th scope="col"><%= WorkTime.human_attribute_name("task") %></th>
       <th scope="col"><%= WorkTime.human_attribute_name("minutes") %></th>
+      <th scope="col"><%= WorkTime.human_attribute_name("in_hours") %></th>
     </tr>
   </thead>
   <tbody>
@@ -21,12 +22,20 @@
       <td><%= l(work_time.created_at, format: :short) %></td>
       <td><%= work_time.task %></td>
       <td><%= work_time.minutes %></td>
+      <td><%= WorkTime.in_hours(work_time.minutes) %></td>
+      <td><%= link_to 'Edit', edit_work_time_path(work_time) %> | <%= link_to 'Destroy', work_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
     <tr class="table-secondary">
-      <td></td>
-      <td>Total: </td>
-      <td><%= WorkTime.where(account_id: @account.id).sum(:minutes)  %></td>
+      <td>Total </td>
+      <td><%= WorkTime.where(account_id: @account.id).count %> <%= WorkTime.human_attribute_name("tasks") %></td>
+      <%= sum_of_all_minutes = WorkTime.where(account_id: @account.id).sum(:minutes) %>
+      <td><%= sum_of_all_minutes %></td>
+      <td>
+        <%= WorkTime.in_hours(sum_of_all_minutes) %>
+      </td>
+      <td>
+      </td>
     </tr>
   </tbody>
 </table>

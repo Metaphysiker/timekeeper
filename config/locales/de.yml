@@ -44,10 +44,13 @@ de:
   delete_account: "Account löschen"
   personal_account: "Persönliches Konto"
   go_back: "Zurück"
+  minutes: "Minuten"
+  hours: "Stunden"
   errors:
     messages:
       blank: "muss ausgefüllt werden"
       taken: "ist bereits vergeben"
+      not_a_number: ist keine Zahl
   time:
     formats:
       short: "%d.%m.%Y - %H:%M"
