@@ -1,4 +1,4 @@
-<%= simple_form_for(work_time) do |f| %>
+<%= simple_form_for(work_time, html: { data: { cy: "work_time_form" }}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

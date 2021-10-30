@@ -1,14 +1,17 @@
-Cypress.Commands.add('fill_in_worktime_form', (worktime) => {
-  cy.visit('http://localhost:3000/users/sign_up')
-  cy.get("[data-cy=new_work_time_form]").within(($form) => {
-    cy.get('#user_email').type(user["email"])
-    cy.get('#user_password').type("password")
-    cy.get('#user_password_confirmation').type("password")
+Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
+
+  cy.get("[data-cy=work_time_form]").within(($form) => {
+    cy.get('#work_time_task').type(work_time["task"]);
+    cy.get('#work_time_minutes').type(work_time["minutes"]);
     cy.root().submit()
   })
-  cy.contains('Sie haben sich erfolgreich registriert.')
 
-  cy.fixture('locales/de.json').should((de) => {
-    cy.contains(de["de"]["logged_in_as"] + " " + user["email"]);
+  cy.fixture('locales/models.de.json').should((de) => {
+    cy.contains(de["de"]["activerecord"]["models"]["work_time"]["one"]).should("be.visible").click();
+    cy.contains(de["de"]["activerecord"]["attributes"]["work_time"]["work_time_created_successfully"]).should("be.visible").click();
   });
+
+  cy.contains(work_time["task"]).should("be.visible");
+  cy.contains(work_time["minutes"]).should("be.visible");
+
 })

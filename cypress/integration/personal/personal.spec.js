@@ -11,16 +11,24 @@ describe('welcomes user', () => {
   it('signs up and records working hours', () => {
 
     cy.request('http://localhost:3000/test/create_users');
+    cy.request('http://localhost:3000/test/create_accounts');
+    cy.request('http://localhost:3000/test/create_work_times');
+  
     cy.request('http://localhost:3000/test/destroy_all_users')
+    cy.request('http://localhost:3000/test/destroy_all_accounts')
+    cy.request('http://localhost:3000/test/destroy_all_work_times')
 
     cy.readFile('cypress/fixtures/users.json').then((users) => {
       cy.signup(users[0]);
     });
 
-//    cy.fixture('locales/de.json').should((de) => {
-//      cy.contains(de["de"]["welcome"]).should("be.visible")
-//      cy.contains(de["de"]["welcome_description"]).should("be.visible")
-//    })
+    cy.fixture('locales/de.json').should((de) => {
+      cy.contains(de["de"]["personal_account"]).should("be.visible").click();
+    });
+
+    cy.readFile('cypress/fixtures/work_times.json').then((work_times) => {
+      cy.fill_in_work_time_form(work_times[0]);
+    });
 
     cy.logout()
 

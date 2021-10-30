@@ -15,7 +15,7 @@ class User < ApplicationRecord
   private
 
   def add_personal_account_to_user
-    account = Account.create(user_id: self.id, name: "personal")
+    account = Account.create(user_id: self.id, name: I18n.t("personal_account"))
   end
 
 end

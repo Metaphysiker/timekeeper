@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   if Rails.env.development?
     get 'test/generate_json_of_translation'
     get 'test/create_users'
+    get 'test/create_accounts'
+    get 'test/create_work_times'
     get 'test/destroy_all_users'
+    get 'test/destroy_all_accounts'
+    get 'test/destroy_all_work_times'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

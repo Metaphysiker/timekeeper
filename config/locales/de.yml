@@ -42,6 +42,7 @@ de:
   logout: "Abmelden"
   edit_account: "Account bearbeiten"
   delete_account: "Account löschen"
+  personal_account: "Persönliches Konto"
   go_back: "Zurück"
   errors:
     messages:
