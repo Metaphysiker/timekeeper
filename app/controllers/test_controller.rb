@@ -16,11 +16,20 @@ class TestController < ApplicationController
       head :ok
     end
 
+    def create_work_times
+      10.times do
+        create_fake_work_time
+      end
+
+      File.write("cypress/fixtures/work_times.json", WorkTime.all.to_json)
+      head :ok
+    end
+
     def destroy_all_users
       User.all.each do |user|
         sign_out user
       end
-      
+
       User.destroy_all
       head :ok
     end
@@ -32,6 +41,14 @@ class TestController < ApplicationController
         email: Faker::Internet.email,
         password: "password",
         password_confirmation: "password"
+      )
+    end
+
+    def create_fake_work_time
+      WorkTime.create(
+        task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+        minutes: rand(1..1000)
+
       )
     end
 
