@@ -46,6 +46,10 @@ de:
   go_back: "Zurück"
   minutes: "Minuten"
   hours: "Stunden"
+  my_accounts: "Meine Konten"
+  action: "Aktion"
+  actions: "Aktionen"
+  choose_which_account: "Konto auswählen"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

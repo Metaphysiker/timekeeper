@@ -13,6 +13,7 @@ de:
         password: "Passwort"
       work_time:
         created_at: "Datum"
+        time: "Zeit"
         in_hours: "in Stunden"
         task: "Aufgabe"
         tasks: "Aufgaben"

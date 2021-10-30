@@ -5,6 +5,6 @@ class WorkTime < ApplicationRecord
   validates :minutes, numericality: true, presence: true
 
   def self.in_hours(minutes)
-    "#{minutes/60} #{I18n.t("hours")} #{minutes % 60} #{I18n.t("minutes")}"
+    "#{minutes/60} h #{minutes % 60} min"
   end
 end
