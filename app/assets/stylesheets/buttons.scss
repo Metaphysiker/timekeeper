@@ -60,16 +60,35 @@
 }
 
 .account-button {
+  //@extend .rounded !optional;
+  @extend .btn !optional;
+  @extend .w-100 !optional;
+  //@extend .btn-a-color !optional;
+  //@extend .rounded !optional;
+  @extend .bg-d-color !optional;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+  &:hover{
+    color: black;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+}
+
+.account-buttonx {
   @extend .bg-d-color !optional;
   @extend .rounded !optional;
-  @extend .py-4 !optional;
+  @extend .py-2 !optional;
   @extend .my-2 !optional;
   @extend .text-decoration-none !optional;
   color: black;
 
   &:hover{
     color: black;
-    filter: brightness(0.9);
-    transform: scale(1.02);
+    filter: brightness(1.1);
+    transform: scale(1.10);
   }
 }
