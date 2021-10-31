@@ -8,6 +8,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "jquery"
+import "d3/dist/d3.js"
 
 Rails.start()
 ActiveStorage.start()
