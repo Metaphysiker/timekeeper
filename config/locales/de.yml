@@ -49,7 +49,10 @@ de:
   my_accounts: "Meine Konten"
   action: "Aktion"
   actions: "Aktionen"
-  choose_which_account: "Konto auswählen"
+  please_select_account: "Bitte %{account} auswählen"
+  this_week: "Diese Woche"
+  this_month: "Diesen Monat"
+  this_year: "Dieses Jahr"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

@@ -7,6 +7,9 @@ de:
       work_time:
         one: "Arbeitszeit"
         other: "Arbeitszeiten"
+      account:
+        one: "Konto"
+        other: "Konten"
     attributes:
       user:
         email: "e-Mail"
