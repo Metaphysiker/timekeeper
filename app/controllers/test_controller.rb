@@ -39,6 +39,22 @@ class TestController < ApplicationController
       head :ok
     end
 
+    def create_work_times_json
+      work_times_json = []
+      10.times do
+        work_time = OpenStruct(
+          task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+          minutes: rand(1..60),
+          hours: rand(0..10),
+          account_id: Account.first.id
+        )
+        work_times_json.push(work_time)
+      end
+
+      File.write("cypress/fixtures/work_times_json.json", work_times_json.to_h.to_json)
+      head :ok
+    end
+
     def destroy_all_users
       User.all.each do |user|
         sign_out user
