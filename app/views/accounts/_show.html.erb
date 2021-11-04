@@ -54,12 +54,11 @@
     var cachedWidth = $(window).width();
 
     AreaChart(
-    [{date: 2007-04-22, minutes: 70}, {date: 2007-04-23, minutes: 50}, {date: 2007-04-24, minutes: 60}, {date: 2007-04-25, minutes: 70}],
+    <%= raw account.work_time_data %>,
     {
       x: d => d.date,
       y: d => d.minutes,
       yLabel: "Minuten",
-      //xLabel: "Datum",
       width: cachedWidth,
       height: 500,
       color: "steelblue"
@@ -92,6 +91,7 @@
   } = {}) {
     // Compute values.
     const X = d3.map(data, x);
+    console.log(X);
     const Y = d3.map(data, y);
     const I = d3.range(X.length);
 
