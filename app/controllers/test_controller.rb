@@ -45,7 +45,7 @@ class TestController < ApplicationController
         work_time = OpenStruct.new(
           task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
           minutes: rand(1..60),
-          hours: rand(0..10),
+          datetime: Faker::Time.between(from: DateTime.now - 100.days, to: DateTime.now),
           account_id: Account.first.id
         )
         work_times_json.push(work_time.to_h)
@@ -88,6 +88,7 @@ class TestController < ApplicationController
       WorkTime.create(
         task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
         minutes: rand(1..1000),
+        datetime: Faker::Time.between(from: DateTime.now - 100.days, to: DateTime.now),
         account_id: Account.first.id
       )
     end

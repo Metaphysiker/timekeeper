@@ -1,8 +1,14 @@
 Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
 
+  var date_regex = /\d\d\d\d-\d\d-\d\d/gm
+  var extracted_date = work_time.datetime.match(date_regex)[0];
+
   cy.get("[data-cy=work_time_form]").within(($form) => {
-    cy.get('#work_time_task').type(work_time["task"]);
-    cy.get('#work_time_minutes').type(work_time["minutes"]);
+    cy.get('#work_time_task').clear().type(work_time["task"]);
+    cy.get('#work_time_minutes').clear().type(work_time["minutes"]);
+    cy.get('#work_time_datetime_3i').select(Number(extracted_date.split("-")[2]).toString());
+    cy.get('#work_time_datetime_2i').select(Number(extracted_date.split("-")[1]).toString());
+    cy.get('#work_time_datetime_1i').select(Number(extracted_date.split("-")[0]).toString());
     cy.root().submit()
   })
 
@@ -14,6 +20,9 @@ Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
   cy.contains(work_time["task"]).should("be.visible");
   cy.contains(work_time["minutes"]).should("be.visible");
 
+  cy.contains(extracted_date.split("-")[2]).should("be.visible");
+  cy.contains(extracted_date.split("-")[1]).should("be.visible");
+  cy.contains(extracted_date.split("-")[0]).should("be.visible");
 })
 
 

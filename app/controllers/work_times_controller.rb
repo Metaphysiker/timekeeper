@@ -64,6 +64,6 @@ class WorkTimesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_time_params
-      params.require(:work_time).permit(:task, :minutes, :account_id)
+      params.require(:work_time).permit(:task, :minutes, :datetime, :account_id)
     end
 end

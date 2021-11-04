@@ -62,4 +62,5 @@ de:
       not_a_number: ist keine Zahl
   time:
     formats:
-      short: "%d.%m.%Y - %H:%M"
+      short: "%d.%m.%Y"
+      long: "%d.%m.%Y - %H:%M"

@@ -21,7 +21,7 @@
   <tbody>
     <% WorkTime.where(account_id: account.id).each do |work_time| %>
     <tr>
-      <td><%= l(work_time.created_at, format: :short) %></td>
+      <td><%= l(work_time.datetime, format: :short) %></td>
       <td><%= work_time.task %></td>
       <td><%= WorkTime.in_hours(work_time.minutes) %></td>
       <td><%= link_to t("edit"), edit_work_time_path(work_time), class: "btn btn-primary" %><br> <%= link_to t("delete"), work_time, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mt-2" %></td>

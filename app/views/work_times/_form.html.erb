@@ -7,7 +7,7 @@
   <div class="form-inputs">
     <%= f.input :task, placeholder: WorkTime.human_attribute_name("task_placeholder") %>
     <%= f.input :minutes, placeholder: WorkTime.human_attribute_name("minutes_placeholder") %>
-
+    <%= f.input :datetime, discard_hour: true %>
     <%= f.hidden_field :account_id, value: account.id %>
   </div>
 
