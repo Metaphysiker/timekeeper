@@ -36,7 +36,7 @@ de:
   welcome_keywords: "Zeiterfassung, Arbeitsstunden, Arbeitszeit"
   application_name: "Simple Timekeeper"
   get_started: "Loslegen"
-  logged_in_as: "Angemeldet als"
+  logged_in_as: "Angemeldet mit"
   login: "Anmelden"
   signup: "Registrieren"
   logout: "Abmelden"

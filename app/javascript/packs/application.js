@@ -12,3 +12,8 @@ import "d3/dist/d3.js"
 
 Rails.start()
 ActiveStorage.start()
+
+//window.d3 = d3;
+
+window.jQuery = $;
+window.$ = $;

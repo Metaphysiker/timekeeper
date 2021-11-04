@@ -18,7 +18,7 @@ de:
         created_at: "Datum"
         time: "Zeit"
         in_hours: "in Stunden"
-        task: "Aufgabe"
+        task: "Erledigte Aufgabe"
         tasks: "Aufgaben"
         task_placeholder: "z.B. Kunden kontaktiert, Rechnungen verschickt, Mauer repariert"
         minutes: "Minuten"
