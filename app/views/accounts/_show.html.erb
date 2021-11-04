@@ -22,7 +22,7 @@
       <td><%= l(work_time.created_at, format: :short) %></td>
       <td><%= work_time.task %></td>
       <td><%= WorkTime.in_hours(work_time.minutes) %></td>
-      <td><%= link_to 'Edit', edit_work_time_path(work_time) %> | <%= link_to 'Destroy', work_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to t("edit"), edit_work_time_path(work_time) %> | <%= link_to t("delete"), work_time, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
     <tr class="table-secondary">

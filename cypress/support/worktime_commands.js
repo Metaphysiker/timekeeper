@@ -22,6 +22,8 @@ Cypress.Commands.add('sign_up_and_go_to_personal_account', () => {
   cy.request('http://localhost:3000/test/create_users');
   cy.request('http://localhost:3000/test/create_accounts');
   cy.request('http://localhost:3000/test/create_work_times');
+  cy.request('http://localhost:3000/test/create_work_times_only_json');
+
 
   cy.request('http://localhost:3000/test/destroy_all_users')
   cy.request('http://localhost:3000/test/destroy_all_accounts')

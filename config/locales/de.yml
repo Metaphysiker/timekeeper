@@ -40,6 +40,8 @@ de:
   login: "Anmelden"
   signup: "Registrieren"
   logout: "Abmelden"
+  edit: "Bearbeiten"
+  delete: "Löschen"
   edit_account: "Account bearbeiten"
   delete_account: "Account löschen"
   personal_account: "Persönliches Konto"
