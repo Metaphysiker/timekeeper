@@ -15,6 +15,7 @@ de:
         email: "e-Mail"
         password: "Passwort"
       work_time:
+        datetime: "Datum"
         created_at: "Datum"
         time: "Zeit"
         in_hours: "in Stunden"
