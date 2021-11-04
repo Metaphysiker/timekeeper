@@ -54,12 +54,13 @@
     var cachedWidth = $(window).width();
 
     AreaChart(
-    [{date: 2007-04-23, close: 93.24}, {date: 2007-04-24, close: 100.4}],
+    [{date: 2007-04-22, minutes: 70}, {date: 2007-04-23, minutes: 50}, {date: 2007-04-24, minutes: 60}, {date: 2007-04-25, minutes: 70}],
     {
       x: d => d.date,
-      y: d => d.close,
-      yLabel: "↑ Daily close ($)",
-      width: 500,
+      y: d => d.minutes,
+      yLabel: "Minuten",
+      //xLabel: "Datum",
+      width: cachedWidth,
       height: 500,
       color: "steelblue"
     }
@@ -100,7 +101,7 @@
 
     // Compute default domains.
     if (xDomain === undefined) xDomain = d3.extent(X);
-    if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+    if (yDomain === undefined) yDomain = [0, d3.max(Y) + d3.max(Y) / 5];
 
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange);
