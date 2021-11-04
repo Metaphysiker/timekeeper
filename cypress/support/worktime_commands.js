@@ -17,12 +17,14 @@ Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
     cy.contains(de["de"]["activerecord"]["attributes"]["work_time"]["work_time_created_successfully"]).should("be.visible").click();
   });
 
-  cy.contains(work_time["task"]).should("be.visible");
-  cy.contains(work_time["minutes"]).should("be.visible");
+  cy.contains(work_time["task"]).should("be.visible").parent().within(($parent) => {
+    cy.contains(work_time["minutes"]).should("be.visible");
+    cy.contains(extracted_date.split("-")[2]).should("be.visible");
+    cy.contains(extracted_date.split("-")[1]).should("be.visible");
+    cy.contains(extracted_date.split("-")[0]).should("be.visible");
+  })
 
-  cy.contains(extracted_date.split("-")[2]).should("be.visible");
-  cy.contains(extracted_date.split("-")[1]).should("be.visible");
-  cy.contains(extracted_date.split("-")[0]).should("be.visible");
+
 })
 
 

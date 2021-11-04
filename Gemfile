@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'groupdate'
 gem "pundit"
 gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
 gem 'devise-i18n'
