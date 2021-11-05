@@ -54,7 +54,7 @@
     var cachedWidth = $(window).width();
 
     AreaChart(
-    <%= raw account.work_time_data %>,
+    <%= raw account.work_time_data.to_json %>,
     {
       x: d => d.date,
       y: d => d.minutes,
@@ -93,6 +93,7 @@
     const X = d3.map(data, x);
     console.log(X);
     const Y = d3.map(data, y);
+    console.log(Y);
     const I = d3.range(X.length);
 
     // Compute which data points are considered defined.
@@ -106,7 +107,7 @@
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange);
     const yScale = yType(yDomain, yRange);
-    const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
+    const xAxis = d3.axisBottom(xScale).ticks(width / 80);
     const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
 
     // Construct an area generator.
