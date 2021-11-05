@@ -59,6 +59,11 @@
   });
 
   function AreaChart2() {
+
+    data = <%= raw @account.work_time_data.to_json %>;
+
+    console.log(data);
+
     // set the dimensions and margins of the graph
     const margin = {top: 10, right: 200, bottom: 30, left: 100},
           width = $(window).width() - margin.left - margin.right,
@@ -85,6 +90,8 @@
 
       // Now I can use this dataset:
       function(data) {
+
+      console.log(data);
 
       // Add X axis --> it is a date format
       const x = d3.scaleTime()
@@ -113,6 +120,8 @@
           .y1(d => y(d.value))
             )
         })
+
+
       }
 
   function AreaChart(data, {
