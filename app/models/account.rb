@@ -6,16 +6,17 @@ class Account < ApplicationRecord
 
     return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
 
+    interval = 1.day
     data_array = []
     start_date = self.work_times.order(:datetime).limit(1).first.datetime
     end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime
 
     while start_date.before?(end_date)
 
-    sum_of_minutes = self.work_times.where(datetime: start_date..start_date + 1.week).sum(:minutes)
+    sum_of_minutes = self.work_times.where(datetime: start_date..start_date + interval).sum(:minutes)
     data_array.push({date: start_date.to_date.to_s, minutes: sum_of_minutes})
 
-    start_date = start_date + 1.week
+    start_date = start_date + interval
 
     # while loop ends here
     end
