@@ -25,3 +25,5 @@ de:
         minutes: "Minuten"
         minutes_placeholder: "z.B. 35"
         work_time_created_successfully: "wurde erfolgreich eingetragen."
+        work_time_updated_successfully: "wurde erfolgreich bearbeitet."
+        work_time_destroyed_successfully: "wurde erfolgreich gelöscht."

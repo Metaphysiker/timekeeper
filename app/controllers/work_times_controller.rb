@@ -38,7 +38,7 @@ class WorkTimesController < ApplicationController
   def update
     respond_to do |format|
       if @work_time.update(work_time_params)
-        format.html { redirect_to @work_time, notice: "Work time was successfully updated." }
+        format.html { redirect_to account_path(@work_time.account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_updated_successfully")}" }
         format.json { render :show, status: :ok, location: @work_time }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,8 +50,9 @@ class WorkTimesController < ApplicationController
   # DELETE /work_times/1 or /work_times/1.json
   def destroy
     @work_time.destroy
+    account = @work_time.account
     respond_to do |format|
-      format.html { redirect_to work_times_url, notice: "Work time was successfully destroyed." }
+      format.html { redirect_to account_path(account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_destroyed_successfully")}" }
       format.json { head :no_content }
     end
   end

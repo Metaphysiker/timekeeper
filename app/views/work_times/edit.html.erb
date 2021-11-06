@@ -1,6 +1,7 @@
-<h1>Editing Work Time</h1>
+<div class="container">
+<h1><%= t("edit_work_time") %></h1>
 
 <%= render 'form', work_time: @work_time %>
 
-<%= link_to 'Show', @work_time %> |
-<%= link_to 'Back', work_times_path %>
+<%= link_to t("back"), account_path(@work_time.account), class: "secondary-button" %>
+</div>

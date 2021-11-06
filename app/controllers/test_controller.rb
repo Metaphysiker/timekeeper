@@ -40,18 +40,45 @@ class TestController < ApplicationController
     end
 
     def create_work_times_only_json
+
+      name_of_file = "work_times_json"
+      if params["name_of_file"].present?
+        name_of_file = params[:name_of_file]
+      end
+
       work_times_json = []
       10.times do
         work_time = OpenStruct.new(
           task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
           minutes: rand(1..60),
           datetime: Faker::Time.between(from: DateTime.now - 100.days, to: DateTime.now),
-          account_id: Account.first.id
+          #account_id: Account.first.id
         )
         work_times_json.push(work_time.to_h)
       end
 
-      File.write("cypress/fixtures/work_times_json.json", work_times_json.to_json)
+      File.write("cypress/fixtures/#{name_of_file}.json", work_times_json.to_json)
+      head :ok
+    end
+
+    def create_users_only_json
+
+      name_of_file = "users_only_json"
+      if params["name_of_file"].present?
+        name_of_file = params[:name_of_file]
+      end
+
+      user_json = []
+      10.times do
+        user = OpenStruct.new(
+          email: Faker::Internet.unique.email,
+          password: "password",
+          password_confirmation: "password"
+        )
+        user_json.push(user.to_h)
+      end
+
+      File.write("cypress/fixtures/#{name_of_file}.json", user_json.to_json)
       head :ok
     end
 
