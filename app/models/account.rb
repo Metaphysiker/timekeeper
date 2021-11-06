@@ -3,11 +3,27 @@ class Account < ApplicationRecord
   has_many :work_times
 
   def work_time_data
-    data_array = []
 
-    self.work_times.each do |work_time|
-      data_array.push({date: work_time.datetime.to_date.to_s, minutes: work_time.minutes})
+    return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
+
+    data_array = []
+    start_date = self.work_times.order(:datetime).limit(1).first.datetime
+    end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime
+
+    while start_date.before?(end_date)
+
+    sum_of_minutes = self.work_times.where(datetime: start_date..start_date + 1.week).sum(:minutes)
+    data_array.push({date: start_date.to_date.to_s, minutes: sum_of_minutes})
+
+    start_date = start_date + 1.week
+
+    # while loop ends here
     end
+
+
+    #self.work_times.each do |work_time|
+    #  data_array.push({date: work_time.datetime.to_date.to_s, minutes: work_time.minutes})
+    #end
 
     data_array
 
