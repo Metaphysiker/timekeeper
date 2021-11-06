@@ -133,9 +133,11 @@
         .join("circle")
           .attr("fill", "blue")
           .attr("stroke", "none")
+          .attr("minutes", d => d.value)
+          .attr("date", d => d.date)
           .attr("cx", d => x(d.date))
           .attr("cy", d => y(d.value))
-          .attr("r", 10)
+          .attr("r", 6)
           .attr("class", "tooltippable");
 
 // create a tooltip
@@ -149,34 +151,27 @@ var tooltip = d3.select("#diagram")
   .style("border-radius", "5px")
   .style("padding", "5px")
 
-  d3.selectAll(".tooltippable")
-    .on("mousemove", handleMouseOver);
-
-    // Create Event Handlers for mouse
-function handleMouseOver() {  // Add interactivity
-    console.log("mouseover!");
-      // Use D3 to select element, change color and size
-      d3.select(this).attr({
-        fill: "orange",
-        r: radius * 2
-      });
-    }
-
 //
 d3.selectAll(".tooltippable")
   .on("mouseover", function(){
-    return tooltip
+     tooltip
     .style("visibility", "visible")
     .style("opacity", 1)
     ;})
   .on("mousemove", function(){
-    return tooltip
+    d3.select(this)
+    .attr("r", 8);
+
+     tooltip
     .style("top", (event.pageY)+"px")
     .style("left",(event.pageX)+"px")
-    .html("Datum <br />2 h 30 min ")
+    .html(d3.select(this).attr("date") +" <br /> " + d3.select(this).attr("minutes"))
     ;})
   .on("mouseout", function(){
-    return tooltip
+    d3.select(this)
+    .attr("r", 5);
+
+     tooltip
     .style("visibility", "hidden")
     .style("opacity", 0)
     ;});
