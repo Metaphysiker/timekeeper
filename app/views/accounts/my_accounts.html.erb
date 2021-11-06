@@ -6,7 +6,7 @@
   <% @user.accounts.each do |account| %>
     <%= link_to account_path(account), class: "account-button" do %>
     <div class="row">
-        <div class="col-6 border-dark border">
+        <div class="col-6">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
             <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
             <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -23,4 +23,38 @@
     <% end %>
     <br />
   <% end %>
+</div>
+
+<div class="container mb-2">
+  <div class="row row-cols-1 row-cols-md-3 g-2">
+      <% @user.accounts.each do |account| %>
+      <div class="col">
+        <div class="card mb-3 h-100">
+            <%= image_tag("account_placeholder.jpg", class: "img-fluid rounded-start") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= account.name %></h5>
+            <p class="card-text">
+              <%= t("this_week") %>: <%= account.work_times.sum(:minutes) %>
+              <br />
+              <%= t("this_month") %>: <%= account.work_times.sum(:minutes) %>
+              <br />
+              <%= t("this_year") %>: <%= account.work_times.sum(:minutes) %>
+            </p>
+            <%= link_to t("select"), account_path(account), class: "primary-button", data: { cy: "select_this_account" } %>
+            <br>
+            <%= link_to Account.human_attribute_name("edit_account"), edit_account_path(account), class: "secondary-button", data: { cy: "select_this_account" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="col">
+      <div class="card mb-3 h-100">
+          <%= image_tag("new_account_placeholder.jpg", class: "img-fluid rounded-start") %>
+        <div class="card-body">
+          <p class="card-text">
+          <%= link_to Account.human_attribute_name("create_new_account"), new_account_path, class: "primary-button", data: { cy: "select_this_account" } %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
