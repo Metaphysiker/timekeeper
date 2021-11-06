@@ -2,14 +2,15 @@ class Account < ApplicationRecord
   belongs_to :user
   has_many :work_times
 
-  def work_time_data
+  def work_time_data(start_date = nil, end_date = nil, interval = nil)
 
     return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
 
-    interval = 1.day
+    interval = 1.day if interval.nil?
+    start_date = self.work_times.order(:datetime).limit(1).first.datetime if start_date.nil?
+    end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime if end_date.nil?
+
     data_array = []
-    start_date = self.work_times.order(:datetime).limit(1).first.datetime
-    end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime
 
     while start_date.before?(end_date)
 
