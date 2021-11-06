@@ -67,7 +67,6 @@
     data = []
 
     for (var i = 0; i < data_original.length; i++) {
-      console.log(data_original[i]);
       data.push(
           {
             date: d3.timeParse("%Y-%m-%d")(data_original[i].date),
@@ -76,7 +75,6 @@
       )
     }
 
-    console.log(data);
 
     // set the dimensions and margins of the graph
     const margin = {top: 10, right: 200, bottom: 30, left: 100},
@@ -129,7 +127,7 @@
           .y(d => y(d.value))
           )
 
-      // Add the line
+      // Add the circles
       svg.selectAll("myCircles")
         .data(data)
         .join("circle")
@@ -137,8 +135,51 @@
           .attr("stroke", "none")
           .attr("cx", d => x(d.date))
           .attr("cy", d => y(d.value))
-          .attr("r", 3)
+          .attr("r", 10)
+          .attr("class", "tooltippable");
 
+// create a tooltip
+var tooltip = d3.select("#diagram")
+  .append("div")
+  .style("opacity", 0)
+  .attr("class", "tooltip")
+  .style("background-color", "white")
+  .style("border", "solid")
+  .style("border-width", "2px")
+  .style("border-radius", "5px")
+  .style("padding", "5px")
+
+  d3.selectAll(".tooltippable")
+    .on("mousemove", handleMouseOver);
+
+    // Create Event Handlers for mouse
+function handleMouseOver() {  // Add interactivity
+    console.log("mouseover!");
+      // Use D3 to select element, change color and size
+      d3.select(this).attr({
+        fill: "orange",
+        r: radius * 2
+      });
+    }
+
+//
+d3.selectAll(".tooltippable")
+  .on("mouseover", function(){
+    return tooltip
+    .style("visibility", "visible")
+    .style("opacity", 1)
+    ;})
+  .on("mousemove", function(){
+    return tooltip
+    .style("top", (event.pageY)+"px")
+    .style("left",(event.pageX)+"px")
+    .html("Datum <br />2 h 30 min ")
+    ;})
+  .on("mouseout", function(){
+    return tooltip
+    .style("visibility", "hidden")
+    .style("opacity", 0)
+    ;});
 
       }
 
