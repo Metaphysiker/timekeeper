@@ -1,8 +1,5 @@
 <div class="container">
-  <div class="account-button">
-    <strong><%= Account.model_name.human %>: </strong>
-    <%= account.name %>
-  </div>
+  <%= render "accounts/information_card", account: account %>
 <p>
   <%= render 'work_times/form', work_time: WorkTime.new, account: account %>
 </p>
@@ -46,8 +43,6 @@
 
 </div>
 
-<%= link_to 'Edit', edit_account_path(account) %> |
-<%= link_to 'Back', accounts_path %>
 </div>
 
 <script type="text/javascript">
