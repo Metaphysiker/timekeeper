@@ -14,12 +14,14 @@ class Account < ApplicationRecord
 
     while (start_date === end_date) || (start_date.before?(end_date))
 
-    puts("loop_start")
-    puts(start_date)
-    puts(end_date)
-
     sum_of_minutes = self.work_times.where(datetime: start_date..start_date + interval - 1.day).sum(:minutes)
-    data_array.push({date: start_date.to_date.to_s, minutes: sum_of_minutes})
+    data_array.push(
+      {
+        date: start_date.to_date.to_s,
+        minutes: sum_of_minutes,
+        interval: "<strong>#{start_date.to_s} - #{(start_date + interval - 1.day).to_s}</strong>"
+      }
+    )
 
     start_date = start_date + interval
 
