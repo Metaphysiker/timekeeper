@@ -65,8 +65,9 @@ class AccountsController < ApplicationController
   end
 
   def area_chart_data
-    #@donation_project = DonationProject.find_by_title("Wizard braucht etwas zum Mampfen!")
-    render json: @account.area_chart_data.to_json
+    render json: @account.area_chart_data(
+      interval: params[:interval]
+    ).to_json
   end
 
   private

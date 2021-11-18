@@ -41,16 +41,16 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#"><%= t("day-interval") %></a>
+    <a class="nav-link active select-interval-element" data-interval="P1D" aria-current="page"><%= t("day-interval") %></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><%= t("week-interval") %></a>
+    <a class="nav-link select-interval-element" data-interval="P1W"><%= t("week-interval") %></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><%= t("month-interval") %></a>
+    <a class="nav-link select-interval-element" data-interval="P1M"><%= t("month-interval") %></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><%= t("year-interval") %></a>
+    <a class="nav-link select-interval-element"  data-interval="P1Y"><%= t("year-interval") %></a>
   </li>
 </ul>
 
@@ -62,23 +62,36 @@
 
 <script type="text/javascript">
 
+  const account = <%= raw @account.to_json %>;
+  var interval = "P1M";
+
   $(document).ready(function() {
     var cachedWidth = $(window).width();
 
     //AreaChart2();
-    getDataAndDraw("#diagram");
+    getDataAndDraw("#diagram", interval);
 
   });
 
+  //click
+  $( ".select-interval-element" ).click(function() {
+    interval = this.getAttribute('data-interval');
+    getDataAndDraw("#diagram", interval);
+  });
+
+
 
   //functions
-
-  function getDataAndDraw(container){
+  function getDataAndDraw(container, interval){
     $(container).empty();
 
     $.ajax({
       url: "<%= area_chart_data_account_path(@account) %>",
-      method: 'GET'
+      method: 'GET',
+      data: {
+        id: account.id,
+        interval: interval
+      }
     }).always(function( data ) {
       $(container).empty();
       //draw(container, data);
