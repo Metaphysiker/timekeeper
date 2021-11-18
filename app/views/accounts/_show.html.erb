@@ -75,7 +75,9 @@
 
   //click
   $( ".select-interval-element" ).click(function() {
+    $(".select-interval-element").removeClass("active");
     interval = this.getAttribute('data-interval');
+    $(this).addClass("active");
     getDataAndDraw("#diagram", interval);
   });
 
