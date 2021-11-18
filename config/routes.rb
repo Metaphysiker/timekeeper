@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :roles
   resources :accounts do
+    member do
+      get 'area_chart_data'
+    end
     collection do
       get 'my_accounts', as: "my_accounts"
     end

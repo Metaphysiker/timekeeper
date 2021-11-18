@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy ]
+  before_action :set_account, only: %i[ show edit update destroy area_chart_data]
 
   def my_accounts
     if params[:user_id].present?
@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
       @user = current_user
     end
   end
-  
+
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
@@ -62,6 +62,11 @@ class AccountsController < ApplicationController
       format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def area_chart_data
+    #@donation_project = DonationProject.find_by_title("Wizard braucht etwas zum Mampfen!")
+    render json: @account.area_chart_data.to_json
   end
 
   private

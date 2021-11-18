@@ -2,7 +2,7 @@ class Account < ApplicationRecord
   belongs_to :user
   has_many :work_times
 
-  def work_time_data(start_date = nil, end_date = nil, interval = nil)
+  def area_chart_data(start_date = nil, end_date = nil, interval = nil)
 
     return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
 
