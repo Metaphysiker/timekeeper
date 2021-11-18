@@ -70,6 +70,21 @@
 
   });
 
+
+  //functions
+
+  function getDataAndDraw(container){
+    $(container).empty();
+
+    $.ajax({
+      url: "<%= graph_data_work_time_path(@donation_project) %>",
+      method: 'GET'
+    }).always(function( data ) {
+      $(container).empty();
+      draw(container, data);
+    });
+  }
+
   function AreaChart2() {
 
     data_original = <%= raw @account.work_time_data.to_json %>;
