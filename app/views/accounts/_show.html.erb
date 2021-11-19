@@ -64,6 +64,8 @@
 
   const account = <%= raw @account.to_json %>;
   var interval = "P1M";
+  var cachedWidth = $( window ).width();
+
 
   $(document).ready(function() {
     var cachedWidth = $(window).width();
@@ -73,12 +75,23 @@
 
   });
 
-  //click
+  //event-watchers
   $( ".select-interval-element" ).click(function() {
     $(".select-interval-element").removeClass("active");
     interval = this.getAttribute('data-interval');
     $(this).addClass("active");
     getDataAndDraw("#diagram", interval);
+  });
+
+  $( window ).resize(function() {
+    var newWidth = $( window ).width();;
+    if(newWidth !== cachedWidth){
+      //console.log("resize!");
+      cachedWidth = newWidth;
+      width = newWidth;
+      getDataAndDraw('#diagram', interval);
+
+    }
   });
 
 
