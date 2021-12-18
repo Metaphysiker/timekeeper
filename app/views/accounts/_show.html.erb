@@ -160,7 +160,8 @@
         // Add the area
         svg.append("path")
           .datum(data)
-          .attr("fill", "#cce5df")
+          .attr("class", "area-chart-bg-d-color")
+          //.attr("fill", "#cce5df")
           .attr("stroke", "#69b3a2")
           .attr("stroke-width", 1.5)
           .attr("d", d3.area()
@@ -173,7 +174,8 @@
       svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#69b3a2")
+        .attr("class", "area-chart-line-f-color")
+        //.attr("stroke", "#69b3a2")
         .attr("stroke-width", 4)
         .attr("d", d3.line()
           .x(d => x(d.date))
@@ -184,7 +186,7 @@
       svg.selectAll("myCircles")
         .data(data)
         .join("circle")
-          .attr("fill", "blue")
+          //.attr("fill", "blue")
           .attr("stroke", "none")
           .attr("minutes", d => d.value)
           .attr("interval", d => d.interval)
@@ -192,7 +194,7 @@
           .attr("cx", d => x(d.date))
           .attr("cy", d => y(d.value))
           .attr("r", 6)
-          .attr("class", "tooltippable");
+          .attr("class", "tooltippable area-chart-bg-a-color");
 
 // create a tooltip
 var tooltip = d3.select(container)

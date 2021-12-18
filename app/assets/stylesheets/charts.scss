@@ -1,0 +1,39 @@
+@import "variables";
+
+@mixin area_chart_color_modifiers {
+  @each $name, $hex in $main-colors {
+    &-#{$name} {
+      //color: $white;
+      //fill: red;
+      fill: $hex !important;
+    }
+
+    //.badge {
+    //  color: $hex;
+    //  background-color: #ffffff;
+    //}
+  }
+}
+
+.area-chart-bg {
+  @include area_chart_color_modifiers;
+}
+
+@mixin area_chart__line_color_modifiers {
+  @each $name, $hex in $main-colors {
+    &-#{$name} {
+      //color: $white;
+      //fill: red;
+      stroke: $hex !important;
+    }
+
+    //.badge {
+    //  color: $hex;
+    //  background-color: #ffffff;
+    //}
+  }
+}
+
+.area-chart-line {
+  @include area_chart__line_color_modifiers;
+}
