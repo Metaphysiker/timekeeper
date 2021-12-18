@@ -10,43 +10,8 @@
     </div>
   </div>
 
-  <div class="standard-card ">
-    <div class="card-body">
-      <h5 class="card-title"><%= t("overview") %></h5>
-    <table class="table table-striped table-bordered table-responsive">
-      <thead>
-        <tr>
-          <th scope="col"><%= WorkTime.human_attribute_name("created_at") %></th>
-          <th scope="col"><%= WorkTime.human_attribute_name("task") %></th>
-          <th scope="col"><%= WorkTime.human_attribute_name("time") %></th>
-          <th scope="col"><%= t("actions") %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% WorkTime.where(account_id: account.id).order(:datetime).reverse_order.each do |work_time| %>
-        <tr>
-          <td><%= l(work_time.datetime, format: :short) %></td>
-          <td><%= work_time.task %></td>
-          <td><%= WorkTime.in_hours(work_time.minutes) %></td>
-          <td><i class="bi bi-123"></i> <%= link_to t("edit"), edit_work_time_path(work_time), class: "btn btn-primary", data: { cy: "edit_work_time" } %>
-            <br>
-            <%= link_to t("delete"), work_time, method: :delete, data: { confirm: 'Are you sure?', cy: "delete_work_time" }, class: "btn btn-danger mt-2" %></td>
-        </tr>
-        <% end %>
-        <tr class="table-secondary">
-          <td>Total </td>
-          <td><%= WorkTime.where(account_id: account.id).count %> <%= WorkTime.human_attribute_name("tasks") %></td>
-          <% sum_of_all_minutes = WorkTime.where(account_id: account.id).sum(:minutes) %>
-          <td>
-            <%= WorkTime.in_hours(sum_of_all_minutes) %>
-          </td>
-          <td>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
+  <%= render "work_times/table", account: account %>
+
 
 
 <div class="border rounded p-1 mb-2">
