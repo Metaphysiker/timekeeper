@@ -20,4 +20,9 @@ Cypress.Commands.add('sign_up_and_go_to_personal_account', (user) => {
   cy.fixture('locales/de.json').should((de) => {
     cy.contains(de["de"]["personal_account"]).should("be.visible").click();
   });
+
+  cy.get("[data-cy=select_account]").first().click();
+
+
+
 })

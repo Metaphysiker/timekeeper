@@ -20,7 +20,7 @@
               <br />
               <%= t("this_year") %>: <%= account.work_times.sum(:minutes) %>
             </p>
-            <%= link_to t("select"), account_path(account), class: "primary-button", data: { cy: "select_this_account" } %>
+            <%= link_to t("select"), account_path(account), class: "primary-button", data: { cy: "select_account" } %>
             <br>
             <%= link_to Account.human_attribute_name("edit_account"), edit_account_path(account), class: "secondary-button", data: { cy: "select_this_account" } %>
           </div>

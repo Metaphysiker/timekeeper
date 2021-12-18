@@ -13,6 +13,6 @@ Cypress.Commands.add('login', (user) => {
 })
 
 Cypress.Commands.add('logout', () => {
-  cy.get("[data-cy=logout]").click()
+  cy.get("[data-cy=logout]").click();
   cy.contains('Erfolgreich abgemeldet.');
 })
