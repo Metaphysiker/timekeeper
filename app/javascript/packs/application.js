@@ -8,6 +8,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "jquery"
+//import "jquery-ui"
+import "jquery-ui/ui/widgets/datepicker.js"
 import "d3/dist/d3.js"
 
 Rails.start()

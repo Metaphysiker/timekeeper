@@ -13,6 +13,14 @@
   <%= render "work_times/table", account: account %>
 
 
+<p>
+  <%= simple_form_for(:work_time_range, as: :user, method: :post, url: root_path) do |f| %>
+    <p>Date: <input type="text" id="work_time_start_date"></p>
+    <p>Date: <input type="text" id="work_time_end_date"></p>
+
+    <%= f.submit 'New user' %>
+  <% end %>
+</p>
 
 <div class="border rounded p-1 mb-2">
   <ul class="nav nav-tabs">
@@ -57,6 +65,12 @@
 
 
   $(document).ready(function() {
+
+    $( function() {
+      $( "#work_time_start_date" ).datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });
+      $( "#work_time_end_date" ).datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });
+    } );
+
     var cachedWidth = $(window).width();
 
     //AreaChart2();
