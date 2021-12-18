@@ -1,0 +1,4 @@
+.standard-card {
+  @extend .card !optional;
+  @extend .mb-2 !optional;
+}
