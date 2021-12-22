@@ -12,21 +12,8 @@
 
   <%= render "work_times/table", account: account %>
 
+  <%= render "accounts/select_date_range", account: account %>
 
-<div class="row">
-  <div class="col-6">
-    <p>Start Date:</p>
-  </div>
-  <div class="col-6">
-    <p>End Date</p>
-  </div>
-  <div class="col-6">
-    <p><input type="text" class="form-control" id="work_time_start_date"></p>
-  </div>
-  <div class="col-6">
-    <p><input type="text" class="form-control" id="work_time_end_date"></p>
-  </div>
-</div>
 
 <div class="border rounded p-1 mb-2">
   <ul class="nav nav-tabs">
@@ -71,6 +58,10 @@
 
 
   $(document).ready(function() {
+
+    $( ".select_date_range_button" ).click(function() {
+
+    });
 
     $( function() {
       $( "#work_time_start_date" ).datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });

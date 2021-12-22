@@ -1,0 +1,39 @@
+<div class="standard-card ">
+  <div class="card-body">
+    <h5 class="card-title"><%= t("select_date_range") %></h5>
+    <p class="card-text">
+    </p>
+      <div class="row">
+        <div class="col-6">
+          <p>Start Date:</p>
+        </div>
+        <div class="col-6">
+          <p>End Date</p>
+        </div>
+        <div class="col-6">
+          <p><input type="text" class="form-control" id="work_time_start_date"></p>
+        </div>
+        <div class="col-6">
+          <p><input type="text" class="form-control" id="work_time_end_date"></p>
+        </div>
+      </div>
+      <button type="button" class="primary-button select_date_range_button"><%= t("select_date_range") %></button>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    $( ".select_date_range_button" ).click(function() {
+
+    });
+
+    $( function() {
+      $( "#work_time_start_date" ).datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });
+      $( "#work_time_end_date" ).datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });
+    } );
+
+  });
+
+</script>
