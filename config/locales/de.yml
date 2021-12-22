@@ -58,6 +58,11 @@ de:
   this_week: "Diese Woche"
   this_month: "Diesen Monat"
   this_year: "Dieses Jahr"
+  select_date_range: "Datumsbereich auswählen"
+  apply_date_range: "Datumsbereich anwenden"
+  start_date: "von"
+  end_date: "bis"
+  overview: "Übersicht"
   errors:
     messages:
       blank: "muss ausgefüllt werden"
@@ -67,3 +72,4 @@ de:
     formats:
       short: "%d.%m.%Y"
       long: "%d.%m.%Y - %H:%M"
+      date_range: "%d. %B, %Y"
