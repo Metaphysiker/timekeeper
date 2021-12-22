@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy area_chart_data]
+  before_action :set_account, only: %i[ show edit update destroy area_chart_data data_overview]
+  before_action :set_start_and_end_date, only: %i[show data_overview]
+
 
   def my_accounts
     if params[:user_id].present?
@@ -16,21 +18,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1 or /accounts/1.json
   def show
-    if params[:start_date].present?
-      @start_date = DateTime.parse(params[:start_date])
-    elsif !@account.work_times.empty?
-      @start_date = @account.work_times.order(:datetime).first.datetime
-    else
-      @start_date = DateTime.now
-    end
 
-    if params[:end_date].present?
-      @end_date = DateTime.parse(params[:end_date])
-    elsif !@account.work_times.empty?
-      @end_date = @account.work_times.order(:datetime).last.datetime
-    else
-      @end_date = DateTime.now
-    end
   end
 
   # GET /accounts/new
@@ -79,6 +67,10 @@ class AccountsController < ApplicationController
     end
   end
 
+  def data_overview
+    render layout: false
+  end
+
   def area_chart_data
     render json: @account.area_chart_data(
       interval: params[:interval],
@@ -91,6 +83,24 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
+    end
+
+    def set_start_and_end_date
+      if params[:start_date].present?
+        @start_date = DateTime.parse(params[:start_date])
+      elsif !@account.work_times.empty?
+        @start_date = @account.work_times.order(:datetime).first.datetime
+      else
+        @start_date = DateTime.now
+      end
+
+      if params[:end_date].present?
+        @end_date = DateTime.parse(params[:end_date])
+      elsif !@account.work_times.empty?
+        @end_date = @account.work_times.order(:datetime).last.datetime
+      else
+        @end_date = DateTime.now
+      end
     end
 
     # Only allow a list of trusted parameters through.

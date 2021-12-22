@@ -33,11 +33,43 @@
   $(document).ready(function() {
 
     $( ".select_date_range_button" ).click(function() {
-      window.location.replace("<%= account_path(account) %>" + "/" + $('#work_time_start_date').val() + "/" + $('#work_time_end_date').val());
+      //window.location.replace("<%= account_path(account) %>" + "/" + $('#work_time_start_date').val() + "/" + $('#work_time_end_date').val());
+      $.ajax({
+        url: "<%= data_overview_account_path(@account) %>",
+        method: 'GET',
+        data: {
+          id: account.id,
+          interval: "P1M",
+          start_date: $('#work_time_start_date').val(),
+          end_date: $('#work_time_end_date').val()
+        }
+      }).always(function( data ) {
+        $(container).empty();
+        //draw(container, data);
+        AreaChart2(container, data);
+      });
     });
 
     $( ".set_date_range_button" ).click(function() {
-      window.location.replace("<%= account_path(account) %>" + "/" + $(this).data("start_date") + "/" + $(this).data("end_date"));
+      //window.location.replace("<%= account_path(account) %>" + "/" + $(this).data("start_date") + "/" + $(this).data("end_date"));
+      $.ajax({
+        url: "<%= data_overview_account_path(@account) %>",
+        method: 'GET',
+        data: {
+          id: account.id,
+          interval: "P1M",
+          start_date: $('#work_time_start_date').val(),
+          end_date: $('#work_time_end_date').val()
+        }
+      }).done(function( data ) {
+        $(".data_overview").empty();
+        $(".data_overview").replaceWith(data);
+      }).always(function( data ) {
+        //$(container).empty();
+        //draw(container, data);
+        //AreaChart2(container, data);
+      });
+
     });
 
     $( ".select_date_range_buttonx" ).click(function() {
@@ -60,7 +92,6 @@
       $("#work_time_end_date").datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });
       $("#work_time_start_date").datepicker( "setDate" , '<%= start_date.strftime("%d-%m-%Y") %>' );
       $("#work_time_end_date").datepicker( "setDate" , '<%= end_date.strftime("%d-%m-%Y") %>' );
-
     } );
 
   });
