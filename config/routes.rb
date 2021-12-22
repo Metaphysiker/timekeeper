@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       get 'my_accounts', as: "my_accounts"
     end
   end
+
+  get 'accounts/:id/:start_date/:end_date', to: 'accounts#show'
+
+
   resources :work_times
   devise_for :users
   root 'static_pages#welcome'

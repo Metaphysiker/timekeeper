@@ -10,9 +10,9 @@
     </div>
   </div>
 
-  <%= render "work_times/table", account: account %>
+  <%= render "work_times/table", account: account, start_date: start_date, end_date: end_date %>
 
-  <%= render "accounts/select_date_range", account: account %>
+  <%= render "accounts/select_date_range", account: account, start_date: start_date, end_date: end_date %>
 
 
 <div class="border rounded p-1 mb-2">
@@ -84,7 +84,7 @@
   });
 
   $( window ).resize(function() {
-    var newWidth = $( window ).width();;
+    var newWidth = $( window ).width();
     if(newWidth !== cachedWidth){
       //console.log("resize!");
       cachedWidth = newWidth;
@@ -102,11 +102,13 @@
     $(container).html(spinner_html);
 
     $.ajax({
-      url: "<%= area_chart_data_account_path(@account) %>",
+      url: "<%= area_chart_data_account_path(account) %>",
       method: 'GET',
       data: {
         id: account.id,
-        interval: interval
+        interval: interval,
+        start_date: "<%= start_date.strftime("%d-%m-%Y") %>",
+        end_date: "<%= end_date.strftime("%d-%m-%Y") %>"
       }
     }).always(function( data ) {
       $(container).empty();

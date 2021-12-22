@@ -3,11 +3,8 @@ class Account < ApplicationRecord
   has_many :work_times
 
   def area_chart_data(start_date: nil, end_date: nil, interval: nil)
-    puts "area_chart_data"
-    puts interval
 
     return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
-
 
     if interval.blank?
       interval = 1.day
@@ -15,8 +12,18 @@ class Account < ApplicationRecord
       interval = ActiveSupport::Duration.parse(interval)
     end
 
-    start_date = self.work_times.order(:datetime).limit(1).first.datetime.to_date if start_date.nil?
-    end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime.to_date if end_date.nil?
+    if start_date.nil?
+      start_date = self.work_times.order(:datetime).limit(1).first.datetime.to_date
+    else
+      start_date = DateTime.parse(start_date)
+    end
+
+    if end_date.nil?
+      end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime.to_date
+    else
+      end_date = DateTime.parse(end_date)
+    end
+
 
     data_array = []
 

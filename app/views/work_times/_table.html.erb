@@ -11,8 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <% earliest_work_time = WorkTime.order(:datetime).first.datetime %>
-      <% latest_work_time = WorkTime.order(:datetime).last.datetime %>
+      <% earliest_work_time = start_date.blank? ? WorkTime.order(:datetime).first.datetime : start_date %>
+      <% latest_work_time = end_date.blank? ? WorkTime.order(:datetime).last.datetime : end_date %>
       <% WorkTime.where(account_id: account.id).where(datetime: earliest_work_time..latest_work_time).order(:datetime).reverse_order.each do |work_time| %>
       <tr>
         <td><%= l(work_time.datetime, format: :short) %></td>
@@ -25,8 +25,8 @@
       <% end %>
       <tr class="table-secondary">
         <td>Total </td>
-        <td><%= WorkTime.where(account_id: account.id).count %> <%= WorkTime.human_attribute_name("tasks") %></td>
-        <% sum_of_all_minutes = WorkTime.where(account_id: account.id).sum(:minutes) %>
+        <td><%= WorkTime.where(account_id: account.id).where(datetime: earliest_work_time..latest_work_time).count %> <%= WorkTime.human_attribute_name("tasks") %></td>
+        <% sum_of_all_minutes = WorkTime.where(account_id: account.id).where(datetime: earliest_work_time..latest_work_time).sum(:minutes) %>
         <td>
           <%= WorkTime.in_hours(sum_of_all_minutes) %>
         </td>
