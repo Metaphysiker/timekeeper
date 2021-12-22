@@ -8,6 +8,12 @@
     <%= f.input :task, placeholder: WorkTime.human_attribute_name("task_placeholder") %>
     <%= f.input :minutes, placeholder: WorkTime.human_attribute_name("minutes_placeholder") %>
     <%= f.input :datetime, discard_hour: true %>
+
+    <%= f.simple_fields_for :work_time do |category_form| %>
+      <% account.categories.each do |category| %>
+        <%= category_form.input category.name.parameterize.underscore.to_sym %>
+      <% end %>
+    <% end %>
     <%= f.hidden_field :account_id, value: account.id %>
   </div>
 

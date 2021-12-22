@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   belongs_to :user
   has_many :work_times
+  has_many :categories
 
   def area_chart_data(start_date: nil, end_date: nil, interval: nil)
 
