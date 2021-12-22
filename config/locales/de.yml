@@ -58,11 +58,16 @@ de:
   this_week: "Diese Woche"
   this_month: "Diesen Monat"
   this_year: "Dieses Jahr"
+  this_account: "Alles"
   select_date_range: "Datumsbereich auswählen"
   apply_date_range: "Datumsbereich anwenden"
   start_date: "von"
   end_date: "bis"
   overview: "Übersicht"
+  day-interval: "in Tagen"
+  week-interval: "in Wochen"
+  month-interval: "in Monaten"
+  year-interval: "in Jahren"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

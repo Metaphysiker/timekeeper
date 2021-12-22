@@ -3,10 +3,10 @@
       <a class="nav-link select-interval-element" data-interval="P1D" aria-current="page"><%= t("day-interval") %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link select-interval-element" data-interval="P1W"><%= t("week-interval") %></a>
+      <a class="nav-link select-interval-element active" data-interval="P1W"><%= t("week-interval") %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link select-interval-element active" data-interval="P1M"><%= t("month-interval") %></a>
+      <a class="nav-link select-interval-element" data-interval="P1M"><%= t("month-interval") %></a>
     </li>
     <li class="nav-item">
       <a class="nav-link select-interval-element"  data-interval="P1Y"><%= t("year-interval") %></a>
@@ -25,13 +25,13 @@
 
 <script type="text/javascript">
 
-  const account = <%= raw @account.to_json %>;
+  var account = <%= raw @account.to_json %>;
   var interval = "P1M";
   var cachedWidth = $( window ).width();
 
   var spinner_html = `
   <div class="text-center my-4" style="height: 500px">
-    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
@@ -114,12 +114,12 @@
 
 
     // set the dimensions and margins of the graph
-    const margin = {top: 50, right: 50, bottom: 50, left: 50},
+    var margin = {top: 50, right: 50, bottom: 50, left: 50},
           width = $(container).width() - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    const svg = d3.select(container)
+    var svg = d3.select(container)
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -127,7 +127,7 @@
         .attr("transform",`translate(${margin.left},${margin.top})`);
 
         // Add X axis --> it is a date format
-        const x = d3.scaleTime()
+        var x = d3.scaleTime()
           .domain(d3.extent(data, d => d.date))
           .range([ 0, width ]);
           svg.append("g")
@@ -135,7 +135,7 @@
             .call(d3.axisBottom(x));
 
         // Add Y axis
-        const y = d3.scaleLinear()
+        var y = d3.scaleLinear()
           .domain([0, d3.max(data, d => +d.value)])
           .range([ height, 0 ]);
           svg.append("g")
@@ -240,33 +240,33 @@ d3.selectAll(".tooltippable")
     color = "currentColor" // fill color of area
   } = {}) {
     // Compute values.
-    const X = d3.map(data, x);
-    const Y = d3.map(data, y);
-    const I = d3.range(X.length);
+    var X = d3.map(data, x);
+    var Y = d3.map(data, y);
+    var I = d3.range(X.length);
 
     // Compute which data points are considered defined.
     if (defined === undefined) defined = (d, i) => !isNaN(X[i]) && !isNaN(Y[i]);
-    const D = d3.map(data, defined);
+    var D = d3.map(data, defined);
 
     // Compute default domains.
     if (xDomain === undefined) xDomain = d3.extent(X);
     if (yDomain === undefined) yDomain = [0, d3.max(Y) + d3.max(Y) / 5];
 
-    // Construct scales and axes.
-    const xScale = xType(xDomain, xRange);
-    const yScale = yType(yDomain, yRange);
-    const xAxis = d3.axisBottom(xScale).ticks(width / 80);
-    const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
+    // varruct scales and axes.
+    var xScale = xType(xDomain, xRange);
+    var yScale = yType(yDomain, yRange);
+    var xAxis = d3.axisBottom(xScale).ticks(width / 80);
+    var yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
 
-    // Construct an area generator.
-    const area = d3.area()
+    // varruct an area generator.
+    var area = d3.area()
         .defined(i => D[i])
         .curve(curve)
         .x(i => xScale(X[i]))
         .y0(yScale(0))
         .y1(i => yScale(Y[i]));
 
-    const svg = d3.select(container).append('svg')
+    var svg = d3.select(container).append('svg')
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height])

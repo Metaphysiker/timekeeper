@@ -3,6 +3,8 @@
       <button type="button" data-start_date="<%= Date.today.beginning_of_week.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_week.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_week") %></button>
       <button type="button" data-start_date="<%= Date.today.beginning_of_month.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_month.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_month") %></button>
       <button type="button" data-start_date="<%= Date.today.beginning_of_year.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_year.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_year") %></button>
+      <button type="button" class="date_range_button set_date_range_button"><%= t("this_account") %></button>
+
       <button class="date_range_button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <%= t("select_date_range") %>
       </button>
@@ -30,62 +32,72 @@
 
 <script type="text/javascript">
 
+  var spinner_html = `
+  <div class="text-center my-4" style="height: 500px">
+    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+`;
+
   $(document).ready(function() {
 
     $( ".select_date_range_button" ).click(function() {
       //window.location.replace("<%= account_path(account) %>" + "/" + $('#work_time_start_date').val() + "/" + $('#work_time_end_date').val());
+      $(".data_overview").empty();
+      $(".data_overview").html(spinner_html);
+
       $.ajax({
         url: "<%= data_overview_account_path(@account) %>",
         method: 'GET',
         data: {
           id: account.id,
-          interval: "P1M",
+          interval: "P1W",
           start_date: $('#work_time_start_date').val(),
           end_date: $('#work_time_end_date').val()
         }
-      }).always(function( data ) {
-        $(container).empty();
-        //draw(container, data);
-        AreaChart2(container, data);
+      }).done(function( data ) {
+
+        $(".data_overview").replaceWith(function() {
+            return $(data).hide().fadeIn(1000);
+        });
+
       });
     });
 
     $( ".set_date_range_button" ).click(function() {
       //window.location.replace("<%= account_path(account) %>" + "/" + $(this).data("start_date") + "/" + $(this).data("end_date"));
+
+      $(".data_overview").empty();
+      $(".data_overview").html(spinner_html);
+
+      var data = {
+        id: account.id,
+        interval: "P1W",
+      };
+
+      if (typeof $(this).data("start_date") !== 'undefined') {
+        data.start_date = $(this).data("start_date")
+      }
+
+      if (typeof $(this).data("end_date") !== 'undefined') {
+        data.end_date = $(this).data("end_date")
+      }
+
       $.ajax({
         url: "<%= data_overview_account_path(@account) %>",
         method: 'GET',
-        data: {
-          id: account.id,
-          interval: "P1M",
-          start_date: $('#work_time_start_date').val(),
-          end_date: $('#work_time_end_date').val()
-        }
+        data: data
       }).done(function( data ) {
-        $(".data_overview").empty();
-        $(".data_overview").replaceWith(data);
-      }).always(function( data ) {
-        //$(container).empty();
-        //draw(container, data);
-        //AreaChart2(container, data);
+
+        $(".data_overview").replaceWith(function() {
+            return $(data).hide().fadeIn(1000);
+        });
+
       });
 
     });
 
-    $( ".select_date_range_buttonx" ).click(function() {
-      $.ajax({
-        url: "<%= area_chart_data_account_path(@account) %>",
-        method: 'GET',
-        data: {
-          id: account.id,
-          interval: "P1M"
-        }
-      }).always(function( data ) {
-        $(container).empty();
-        //draw(container, data);
-        AreaChart2(container, data);
-      });
-    });
 
     $( function() {
       $("#work_time_start_date").datepicker({'language' : 'de', 'dateFormat' : 'dd-mm-yy', firstDay: 1 });

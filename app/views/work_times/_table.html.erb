@@ -16,9 +16,14 @@
         <td><%= l(work_time.datetime, format: :short) %></td>
         <td><%= work_time.task %></td>
         <td><%= WorkTime.in_hours(work_time.minutes) %></td>
-        <td><i class="bi bi-123"></i> <%= link_to t("edit"), edit_work_time_path(work_time), class: "btn btn-primary", data: { cy: "edit_work_time" } %>
+        <td> <%= link_to edit_work_time_path(work_time), class: "btn btn-primary", data: { cy: "edit_work_time" } do %>
+          <i class="bi bi-pencil-square"></i> <%= t("edit") %>
+        <% end %>
           <br>
-          <%= link_to t("delete"), work_time, method: :delete, data: { confirm: 'Are you sure?', cy: "delete_work_time" }, class: "btn btn-danger mt-2" %></td>
+          <%= link_to work_time, method: :delete, data: { confirm: 'Are you sure?', cy: "delete_work_time" }, class: "btn btn-danger mt-2" do %>
+            <i class="bi bi-x-square"></i> <%= t("delete") %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
       <tr class="table-secondary">
