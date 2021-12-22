@@ -9,9 +9,9 @@
     <%= f.input :minutes, placeholder: WorkTime.human_attribute_name("minutes_placeholder") %>
     <%= f.input :datetime, discard_hour: true %>
 
-    <%= f.simple_fields_for :work_time do |category_form| %>
+    <%= f.simple_fields_for :categories do |category_form| %>
       <% account.categories.each do |category| %>
-        <%= category_form.input category.name.parameterize.underscore.to_sym %>
+        <%= category_form.input category.name.parameterize.underscore.to_sym, :input_html => { :value => work_time.categories[category.name] } %>
       <% end %>
     <% end %>
     <%= f.hidden_field :account_id, value: account.id %>

@@ -23,6 +23,12 @@ class WorkTimesController < ApplicationController
   # POST /work_times or /work_times.json
   def create
     @work_time = WorkTime.new(work_time_params)
+
+    categories_hash = {}
+    @work_time.account.categories.each do |category|
+      categories_hash[category] = params[:work_time]["categories"][category]
+    end
+
     respond_to do |format|
       if @work_time.save
         format.html { redirect_to account_path(@work_time.account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_created_successfully")}" }
@@ -36,6 +42,12 @@ class WorkTimesController < ApplicationController
 
   # PATCH/PUT /work_times/1 or /work_times/1.json
   def update
+
+    categories_hash = {}
+    @work_time.account.categories.each do |category|
+      categories_hash[category] = params[:work_time]["categories"][category]
+    end
+    
     respond_to do |format|
       if @work_time.update(work_time_params)
         format.html { redirect_to account_path(@work_time.account), notice: "#{WorkTime.model_name.human} #{WorkTime.human_attribute_name("work_time_updated_successfully")}" }
@@ -65,6 +77,6 @@ class WorkTimesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def work_time_params
-      params.require(:work_time).permit(:task, :minutes, :datetime, :account_id)
+      params.require(:work_time).permit(:task, :minutes, :datetime, :account_id, :categories => {})
     end
 end
