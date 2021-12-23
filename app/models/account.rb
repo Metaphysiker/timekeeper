@@ -86,16 +86,18 @@ class Account < ApplicationRecord
 
       distinct_values.uniq!
 
+      total_minutes = self.work_times.where(datetime: start_date..end_date).sum(:minutes)
+
       distinct_values.each do |value|
 
         if value.blank?
           null_minutes = self.work_times.where.not("(categories->'#{category}') is not null").where(datetime: start_date..end_date).sum(:minutes)
           empty_minutes = self.work_times.where('categories @> ?', {"#{category}": ""}.to_json).where(datetime: start_date..end_date).sum(:minutes)
           minutes = null_minutes + empty_minutes
-          hash_with_values_for_donut_chart["#{I18n.t("empty")} - #{minutes}"] = minutes
+          hash_with_values_for_donut_chart["#{value} - #{calculate_percentage(total_minutes, minutes)}%"] = minutes
         else
           minutes = self.work_times.where('categories @> ?', {"#{category}": "#{value}"}.to_json).where(datetime: start_date..end_date).sum(:minutes)
-          hash_with_values_for_donut_chart["#{value} - #{minutes}"] = minutes
+          hash_with_values_for_donut_chart["#{value} - #{calculate_percentage(total_minutes, minutes)}%"] = minutes
         end
       end
 
@@ -107,6 +109,12 @@ class Account < ApplicationRecord
   after_create :add_category_project_to_account
 
   private
+
+  def calculate_percentage(total_value, part_value)
+    percentage = (part_value.to_f/total_value.to_f)*100
+
+    (percentage).round(1)
+  end
 
   def add_category_project_to_account
     category = Category.create(account_id: self.id, name: I18n.t("project"))
