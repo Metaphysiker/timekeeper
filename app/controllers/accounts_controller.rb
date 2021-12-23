@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy area_chart_data data_overview]
+  before_action :set_account, only: %i[ show edit update destroy area_chart_data donut_chart_data data_overview]
   before_action :set_start_and_end_date, only: %i[show data_overview]
 
 
@@ -74,6 +74,13 @@ class AccountsController < ApplicationController
   def area_chart_data
     render json: @account.area_chart_data(
       interval: params[:interval],
+      start_date: params[:start_date],
+      end_date: params[:end_date]
+    ).to_json
+  end
+
+  def donut_chart_data
+    render json: @account.donut_chart_data(
       start_date: params[:start_date],
       end_date: params[:end_date]
     ).to_json

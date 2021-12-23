@@ -56,6 +56,40 @@ class Account < ApplicationRecord
     #[{"date": "01-01-2021", "minutes": 200}, {"date": "2019-02-03", "minutes": 100}].to_json
   end
 
+  def donut_chart_data(start_date: nil, end_date: nil)
+
+    #{a: 9, b: 20, c:30, d:8, e:12, f:3, g:7, h:14}
+
+    #return [{a: 9, b: 20, c:30, d:8, e:12, f:3, g:7, h:14}]
+
+    #return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
+
+    if start_date.nil?
+      start_date = self.work_times.order(:datetime).limit(1).first.datetime.to_date
+    else
+      start_date = DateTime.parse(start_date)
+    end
+
+    if end_date.nil?
+      end_date = self.work_times.order(:datetime).reverse_order.limit(1).first.datetime.to_date
+    else
+      end_date = DateTime.parse(end_date)
+    end
+
+
+    data_array = []
+
+    categories.each do |category|
+      work_times_with_category = self.work_times.where("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date)
+    end
+
+    self.work_times.select("categories -> Projekt").distinct
+
+    byebug
+
+    data_array
+  end
+
   after_create :add_category_project_to_account
 
   private

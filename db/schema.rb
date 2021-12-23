@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_202312) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "datetime"
-    t.json "categories", default: {}
+    t.jsonb "categories", default: {}
     t.index ["account_id"], name: "index_work_times_on_account_id"
   end
 

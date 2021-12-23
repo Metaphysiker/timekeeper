@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :accounts do
     member do
       get 'area_chart_data'
+      get 'donut_chart_data'
       get 'data_overview'
     end
     collection do
