@@ -9,7 +9,8 @@ Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
     cy.get('#work_time_datetime_3i').select(Number(extracted_date.split("-")[2]).toString());
     cy.get('#work_time_datetime_2i').select(Number(extracted_date.split("-")[1]).toString());
     cy.get('#work_time_datetime_1i').select(Number(extracted_date.split("-")[0]).toString());
-    cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).clear().type(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+    cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).select(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+    //cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).clear().type(work_time["categories"][Object.keys(work_time["categories"])[0]]);
     cy.root().submit()
   })
 
@@ -42,7 +43,9 @@ Cypress.Commands.add('edit_work_time', (old_work_time, work_time) => {
       cy.get('#work_time_datetime_3i').select(Number(extracted_date.split("-")[2]).toString());
       cy.get('#work_time_datetime_2i').select(Number(extracted_date.split("-")[1]).toString());
       cy.get('#work_time_datetime_1i').select(Number(extracted_date.split("-")[0]).toString());
-      cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).clear().type(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+      cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).select(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+
+      //cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).clear().type(work_time["categories"][Object.keys(work_time["categories"])[0]]);
       cy.root().submit()
     })
 

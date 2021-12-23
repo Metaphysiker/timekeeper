@@ -94,7 +94,7 @@ class Account < ApplicationRecord
           null_minutes = self.work_times.where.not("(categories->'#{category}') is not null").where(datetime: start_date..end_date).sum(:minutes)
           empty_minutes = self.work_times.where('categories @> ?', {"#{category}": ""}.to_json).where(datetime: start_date..end_date).sum(:minutes)
           minutes = null_minutes + empty_minutes
-          hash_with_values_for_donut_chart["#{value} - #{calculate_percentage(total_minutes, minutes)}%"] = minutes
+          hash_with_values_for_donut_chart["#{I18n.t("empty")} - #{calculate_percentage(total_minutes, minutes)}%"] = minutes
         else
           minutes = self.work_times.where('categories @> ?', {"#{category}": "#{value}"}.to_json).where(datetime: start_date..end_date).sum(:minutes)
           hash_with_values_for_donut_chart["#{value} - #{calculate_percentage(total_minutes, minutes)}%"] = minutes

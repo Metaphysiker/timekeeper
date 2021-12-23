@@ -1,0 +1,18 @@
+<div class="standard-card ">
+  <div class="card-body">
+    <h5 class="card-title"><%= t("manage_categories") %></h5>
+    <p class="card-text">
+    </p>
+    <% account.categories.each do |category|  %>
+      <strong><%= category.name %></strong><br>
+      <ul>
+        <% category.option_field.split("\n").each do |option| %>
+        <li>
+          <%= option %>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to 'Edit', edit_category_path(category) %>
+    <% end %>
+  </div>
+</div>
