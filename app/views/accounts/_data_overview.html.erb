@@ -1,0 +1,12 @@
+<div class="standard-card data_overview" style="min-height: 100vh">
+  <div class="card-body">
+    <h5 class="card-title"><%= t("overview") %></h5>
+    <p>
+      <%= l(start_date, format: :date_range) %> - <%= l(end_date, format: :date_range) %>
+    </p>
+    <%= render "accounts/select_date_range", account: account, start_date: start_date, end_date: end_date %>
+    <%= render "work_times/table", account: account, start_date: start_date, end_date: end_date %>
+    <%= render "work_times/area_chart", account: account, start_date: start_date, end_date: end_date %>
+
+  </div>
+</div>
