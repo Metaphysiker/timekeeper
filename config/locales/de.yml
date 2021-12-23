@@ -68,6 +68,7 @@ de:
   week-interval: "in Wochen"
   month-interval: "in Monaten"
   year-interval: "in Jahren"
+  project: "Projekt"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

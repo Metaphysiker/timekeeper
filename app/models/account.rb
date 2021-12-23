@@ -37,7 +37,6 @@ class Account < ApplicationRecord
         interval: "<strong>#{start_date.to_s} - #{(start_date + interval - 1.day).to_s}</strong>"
       }
     )
-    puts interval.class
     start_date = start_date + interval
 
     # while loop ends here
@@ -54,6 +53,14 @@ class Account < ApplicationRecord
 
     #self.work_times.group_by_week(:datetime).sum(:minutes).to_jsonself.work_times.group_by_week(:datetime).sum(:minutes).to_json unless self.work_times.empty? || self.work_times.count == 1
     #[{"date": "01-01-2021", "minutes": 200}, {"date": "2019-02-03", "minutes": 100}].to_json
+  end
+
+  after_create :add_category_project_to_account
+
+  private
+
+  def add_category_project_to_account
+    category = Category.create(account_id: self.id, name: I18n.t("project"))
   end
 
 end
