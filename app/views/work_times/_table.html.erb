@@ -5,6 +5,9 @@
         <th scope="col"><%= WorkTime.human_attribute_name("created_at") %></th>
         <th scope="col"><%= WorkTime.human_attribute_name("task") %></th>
         <th scope="col"><%= WorkTime.human_attribute_name("time") %></th>
+        <% account.categories.each do |category| %>
+          <th scope="col"><%= category.name %></th>
+        <% end %>
         <th scope="col"><%= t("actions") %></th>
       </tr>
     </thead>
@@ -16,6 +19,9 @@
         <td><%= l(work_time.datetime, format: :short) %></td>
         <td><%= work_time.task %></td>
         <td><%= WorkTime.in_hours(work_time.minutes) %></td>
+        <% account.categories.each do |category| %>
+          <td><%= work_time.categories[category.name] unless work_time.categories[category.name].blank? %></td>
+        <% end %>
         <td> <%= link_to edit_work_time_path(work_time), class: "btn btn-primary", data: { cy: "edit_work_time" } do %>
           <i class="bi bi-pencil-square"></i> <%= t("edit") %>
         <% end %>
@@ -33,6 +39,9 @@
         <td>
           <%= WorkTime.in_hours(sum_of_all_minutes) %>
         </td>
+        <% account.categories.each do |category| %>
+          <td></td>
+        <% end %>
         <td>
         </td>
       </tr>
