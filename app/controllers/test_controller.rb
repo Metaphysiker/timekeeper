@@ -52,6 +52,7 @@ class TestController < ApplicationController
           task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
           minutes: rand(1..60),
           datetime: Faker::Time.between(from: DateTime.now - 100.days, to: DateTime.now),
+          categories: {I18n.t("project") => Faker::Lorem.word }
           #account_id: Account.first.id
         )
         work_times_json.push(work_time.to_h)
@@ -116,7 +117,8 @@ class TestController < ApplicationController
         task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
         minutes: rand(1..1000),
         datetime: Faker::Time.between(from: DateTime.now - 100.days, to: DateTime.now),
-        account_id: Account.first.id
+        account_id: Account.first.id,
+        categories: {I18n.t("project") => Faker::Lorem.word }
       )
     end
 
