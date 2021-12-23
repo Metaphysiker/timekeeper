@@ -78,16 +78,31 @@ class Account < ApplicationRecord
 
 
     data_array = []
+    hash_with_values_for_donut_chart = {}
 
     categories.each do |category|
-      work_times_with_category = self.work_times.where("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date)
+      #distinct_values = create_array_with_distinct_values_of_a_category(category.name, self.work_times.where("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date))
+      distinct_values = create_array_with_distinct_values_of_a_category(category.name, self.work_times.where(datetime: start_date..end_date))
+
+      distinct_values.uniq!
+
+      distinct_values.each do |value|
+
+        if value.blank?
+          null_minutes = self.work_times.where.not("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date).sum(:minutes)
+          empty_minutes = self.work_times.where('categories @> ?', {"#{category.name}": ""}.to_json).where(datetime: start_date..end_date).sum(:minutes)
+
+          hash_with_values_for_donut_chart[I18n.t("empty")] = null_minutes + empty_minutes
+        else
+          minutes = self.work_times.where('categories @> ?', {"#{category.name}": "#{value}"}.to_json).where(datetime: start_date..end_date).sum(:minutes)
+          hash_with_values_for_donut_chart["#{value}"] = minutes
+        end
+      end
+
     end
-
-    self.work_times.select("categories -> Projekt").distinct
-
-    byebug
-
-    data_array
+    #WorkTime.all.select("categories -> 'Projekt'")
+    #UserActivity.pluck("raw_data->'activity'->'type'")
+    [hash_with_values_for_donut_chart]
   end
 
   after_create :add_category_project_to_account
@@ -96,6 +111,24 @@ class Account < ApplicationRecord
 
   def add_category_project_to_account
     category = Category.create(account_id: self.id, name: I18n.t("project"))
+  end
+
+  def create_hash_with_distinct_values_of_a_category(category, records)
+    distinct_values = {}
+
+    records.each do |record|
+      distinct_values[category] = record["categories"][category]
+    end
+    distinct_values
+  end
+
+  def create_array_with_distinct_values_of_a_category(category, records)
+    distinct_values = []
+
+    records.each do |record|
+      distinct_values.push(record["categories"][category])
+    end
+    distinct_values
   end
 
 end
