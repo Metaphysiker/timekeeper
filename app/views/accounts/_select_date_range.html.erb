@@ -1,5 +1,6 @@
 
     <p class="card-text">
+      <button type="button" data-start_date="<%= Date.today.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("today") %></button>
       <button type="button" data-start_date="<%= Date.today.beginning_of_week.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_week.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_week") %></button>
       <button type="button" data-start_date="<%= Date.today.beginning_of_month.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_month.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_month") %></button>
       <button type="button" data-start_date="<%= Date.today.beginning_of_year.strftime("%d-%m-%Y") %>" data-end_date="<%= Date.today.end_of_year.strftime("%d-%m-%Y") %>" class="date_range_button set_date_range_button"><%= t("this_year") %></button>

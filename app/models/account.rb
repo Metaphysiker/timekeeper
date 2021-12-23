@@ -56,7 +56,7 @@ class Account < ApplicationRecord
     #[{"date": "01-01-2021", "minutes": 200}, {"date": "2019-02-03", "minutes": 100}].to_json
   end
 
-  def donut_chart_data(start_date: nil, end_date: nil)
+  def donut_chart_data(start_date: nil, end_date: nil, category: nil)
 
     #{a: 9, b: 20, c:30, d:8, e:12, f:3, g:7, h:14}
 
@@ -80,26 +80,25 @@ class Account < ApplicationRecord
     data_array = []
     hash_with_values_for_donut_chart = {}
 
-    categories.each do |category|
+
       #distinct_values = create_array_with_distinct_values_of_a_category(category.name, self.work_times.where("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date))
-      distinct_values = create_array_with_distinct_values_of_a_category(category.name, self.work_times.where(datetime: start_date..end_date))
+      distinct_values = create_array_with_distinct_values_of_a_category(category, self.work_times.where(datetime: start_date..end_date))
 
       distinct_values.uniq!
 
       distinct_values.each do |value|
 
         if value.blank?
-          null_minutes = self.work_times.where.not("(categories->'#{category.name}') is not null").where(datetime: start_date..end_date).sum(:minutes)
-          empty_minutes = self.work_times.where('categories @> ?', {"#{category.name}": ""}.to_json).where(datetime: start_date..end_date).sum(:minutes)
-
-          hash_with_values_for_donut_chart[I18n.t("empty")] = null_minutes + empty_minutes
+          null_minutes = self.work_times.where.not("(categories->'#{category}') is not null").where(datetime: start_date..end_date).sum(:minutes)
+          empty_minutes = self.work_times.where('categories @> ?', {"#{category}": ""}.to_json).where(datetime: start_date..end_date).sum(:minutes)
+          minutes = null_minutes + empty_minutes
+          hash_with_values_for_donut_chart["#{I18n.t("empty")} - #{minutes}"] = minutes
         else
-          minutes = self.work_times.where('categories @> ?', {"#{category.name}": "#{value}"}.to_json).where(datetime: start_date..end_date).sum(:minutes)
-          hash_with_values_for_donut_chart["#{value}"] = minutes
+          minutes = self.work_times.where('categories @> ?', {"#{category}": "#{value}"}.to_json).where(datetime: start_date..end_date).sum(:minutes)
+          hash_with_values_for_donut_chart["#{value} - #{minutes}"] = minutes
         end
       end
 
-    end
     #WorkTime.all.select("categories -> 'Projekt'")
     #UserActivity.pluck("raw_data->'activity'->'type'")
     [hash_with_values_for_donut_chart]

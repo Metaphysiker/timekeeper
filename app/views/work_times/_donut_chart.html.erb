@@ -1,5 +1,5 @@
-
-  <div class="donut_chart">
+  <h3><%= category.name %></h3>
+  <div class="donut_chart <%= "donut_chart_category-#{category.id}" %>">
     <div class="text-center">
       <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -11,7 +11,12 @@
 
 <script type="text/javascript">
 
-  getDataAndDrawDonutChart(".donut_chart");
+  var start_date = "<%= start_date.strftime("%d-%m-%Y") %>";
+  var end_date = "<%= end_date.strftime("%d-%m-%Y") %>";
+  var category = "<%= category.name %>";
+  var container = ".<%= "donut_chart_category-#{category.id}" %>";
+
+  getDataAndDrawDonutChart(container);
 
   //functions
   function getDataAndDrawDonutChart(container){
@@ -23,8 +28,9 @@
       method: 'GET',
       data: {
         id: account.id,
-        start_date: "<%= start_date.strftime("%d-%m-%Y") %>",
-        end_date: "<%= end_date.strftime("%d-%m-%Y") %>"
+        start_date: start_date,
+        end_date: end_date,
+        category: category
       }
     }).always(function( data ) {
       $(container).empty();
@@ -35,7 +41,8 @@
 
   function DonutChart(container, data){
     // set the dimensions and margins of the graph
-    var width = 450,
+
+    var width = $(container).width(),
         height = 450,
         margin = 40;
 
@@ -43,7 +50,7 @@
     var radius = Math.min(width, height) / 2 - margin
 
     // append the svg object to the div called 'my_dataviz'
-    var svg = d3.select(".donut_chart")
+    var svg = d3.select(container)
       .append("svg")
         .attr("width", width)
         .attr("height", height)

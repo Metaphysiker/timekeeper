@@ -82,7 +82,8 @@ class AccountsController < ApplicationController
   def donut_chart_data
     render json: @account.donut_chart_data(
       start_date: params[:start_date],
-      end_date: params[:end_date]
+      end_date: params[:end_date],
+      category: params[:category]
     ).to_json
   end
 

@@ -55,6 +55,7 @@ de:
   actions: "Aktionen"
   select: "Auswählen"
   please_select_account: "Bitte %{account} auswählen"
+  today: "Heute"
   this_week: "Diese Woche"
   this_month: "Diesen Monat"
   this_year: "Dieses Jahr"
