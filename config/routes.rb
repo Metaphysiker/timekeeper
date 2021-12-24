@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     get 'test/destroy_all_users'
     get 'test/destroy_all_accounts'
     get 'test/destroy_all_work_times'
+    get 'test/destroy_all_categories'
+    get 'test/create_categories_only_json(/:name_of_file)', to: 'test#create_categories_only_json'
     get 'test/create_work_times_only_json(/:name_of_file)', to: 'test#create_work_times_only_json'
     get 'test/create_users_only_json(/:name_of_file)', to: 'test#create_users_only_json'
   end

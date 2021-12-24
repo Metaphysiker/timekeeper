@@ -25,7 +25,7 @@ class SelectOptionsController < ApplicationController
 
     respond_to do |format|
       if @select_option.save
-        format.html { redirect_to @select_option, notice: "Select option was successfully created." }
+        format.html { redirect_to manage_categories_account_path(@select_option.category.account), notice: "#{SelectOption.model_name.human} #{SelectOption.human_attribute_name("created_successfully")}" }
         format.json { render :show, status: :created, location: @select_option }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SelectOptionsController < ApplicationController
   def update
     respond_to do |format|
       if @select_option.update(select_option_params)
-        format.html { redirect_to @select_option, notice: "Select option was successfully updated." }
+        format.html { redirect_to manage_categories_account_path(@select_option.category.account), notice: "#{SelectOption.model_name.human} #{SelectOption.human_attribute_name("updated_successfully")}" }
         format.json { render :show, status: :ok, location: @select_option }
       else
         format.html { render :edit, status: :unprocessable_entity }

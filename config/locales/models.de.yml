@@ -17,10 +17,20 @@ de:
         one: "Auswahl-Option"
         other: "Auswahl-Optionen"
     attributes:
+      select_option:
+        enter: "%{select_option} eintragen"
+        name: "Name"
+        name_placeholder: "z.B. Projekt Alpha, Kampagne Beta, Programm Gamma, Ja, Nein"
+        created_successfully: "wurde erfolgreich eingetragen."
+        updated_successfully: "wurde erfolgreich bearbeitet."
+        destroyed_successfully: "wurde erfolgreich gelöscht."
       category:
         name: "Name"
         name_placeholder: "z.B. Home-Office, Ehrenamtlich, Projekt, Ferien"
         information_about_categories: "Kategorien und ihre Auswahl-Optionen können hier bearbeitet werden: "
+        category_created_successfully: "wurde erfolgreich eingetragen."
+        category_updated_successfully: "wurde erfolgreich bearbeitet."
+        category_destroyed_successfully: "wurde erfolgreich gelöscht."
       user:
         email: "e-Mail"
         password: "Passwort"

@@ -1,5 +1,5 @@
 <% account = category.account.present? ? category.account : account %>
-<%= simple_form_for(category) do |f| %>
+<%= simple_form_for(category, html: { data: { cy: "category_form" }}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

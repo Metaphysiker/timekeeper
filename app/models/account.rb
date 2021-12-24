@@ -62,7 +62,7 @@ class Account < ApplicationRecord
 
     #return [{a: 9, b: 20, c:30, d:8, e:12, f:3, g:7, h:14}]
 
-    #return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
+    return [{leer: 100}] if self.work_times.empty?
 
     if start_date.nil?
       start_date = self.work_times.order(:datetime).limit(1).first.datetime.to_date

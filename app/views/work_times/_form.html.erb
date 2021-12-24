@@ -17,7 +17,7 @@
         <div class="col-10 col-md-11">
           <%= Category.human_attribute_name("information_about_categories") %>
          <br>
-         <%= link_to t("manage_categories"), manage_categories_account_path(account) %>
+         <%= link_to t("manage_categories"), manage_categories_account_path(account), data: { cy: "manage_categories" } %>
         </div>
       </div>
     </div>
