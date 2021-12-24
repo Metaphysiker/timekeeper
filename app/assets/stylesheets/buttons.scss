@@ -32,8 +32,8 @@
   //@extend .rounded !optional;
   @extend .bg-a-color !optional;
   color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
+  //font-weight: bold;
   @extend .my-2 !optional;
   //@extend .text-e-color !optional;
   &:hover{
@@ -49,7 +49,7 @@
   //@extend .btn-a-color !optional;
   @extend .bg-f-color !optional;
   color: white;
-  font-weight: bold;
+  //font-weight: bold;
   @extend .my-2 !optional;
   //@extend .text-e-color !optional;
   &:hover{

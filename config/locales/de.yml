@@ -81,6 +81,7 @@ de:
   workshops: "Workshops & Events"
   miscellaneous: "Diverses"
   manage_categories: "Kategorien verwalten"
+  select_category: "%{category} auswählen"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

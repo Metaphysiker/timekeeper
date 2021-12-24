@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy area_chart_data donut_chart_data data_overview]
+  before_action :set_account, only: %i[ show edit update destroy area_chart_data donut_chart_data data_overview manage_categories]
   before_action :set_start_and_end_date, only: %i[show data_overview]
 
 
@@ -9,6 +9,10 @@ class AccountsController < ApplicationController
     else
       @user = current_user
     end
+  end
+
+  def manage_categories
+
   end
 
   # GET /accounts or /accounts.json

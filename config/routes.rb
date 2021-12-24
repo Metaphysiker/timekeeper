@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'area_chart_data'
       get 'donut_chart_data'
       get 'data_overview'
+      get 'manage_categories'
     end
     collection do
       get 'my_accounts', as: "my_accounts"

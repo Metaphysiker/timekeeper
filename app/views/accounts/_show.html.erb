@@ -3,14 +3,12 @@
 
   <div class="standard-card ">
     <div class="card-body">
-      <h5 class="card-title"><%= t("create worktime") %></h5>
+      <h5 class="card-title"><%= WorkTime.human_attribute_name("enter_work_time", work_time: WorkTime.model_name.human) %></h5>
       <p class="card-text">
         <%= render 'work_times/form', work_time: WorkTime.new, account: account %>
       </p>
     </div>
   </div>
-
-  <%= render "categories/manage_categories", account: account %>
 
   <%= render "accounts/data_overview", account: account, start_date: start_date, end_date: end_date %>
 
