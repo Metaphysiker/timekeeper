@@ -1,0 +1,15 @@
+<% category = select_option.category.present? ? select_option.category : category %>
+
+<%= simple_form_for(select_option) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, placeholder: SelectOption.human_attribute_name("name_placeholder") %>
+    <%= f.hidden_field :category_id, value: category.id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "primary-button" %>
+  </div>
+<% end %>

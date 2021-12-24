@@ -110,3 +110,40 @@
     transform: scale(1.05);
   }
 }
+
+.action_button {
+  //@extend .rounded !optional;
+  @extend .btn !optional;
+  //@extend .btn-a-color !optional;
+  //@extend .rounded !optional;
+  @extend .bg-g-color !optional;
+  color: white;
+  font-size: 0.8rem;
+  //font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+  &:hover{
+    color: #ffffff;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+}
+
+.action_delete_button {
+  //@extend .rounded !optional;
+  @extend .btn !optional;
+  //@extend .btn-a-color !optional;
+  //@extend .rounded !optional;
+  //@extend .bg-g-color !optional;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  //font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+  &:hover{
+    color: #ffffff;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+}

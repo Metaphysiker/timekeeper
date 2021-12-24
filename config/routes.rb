@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :select_options
   resources :categories
   resources :roles
   resources :accounts do

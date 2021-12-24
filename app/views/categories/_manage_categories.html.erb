@@ -5,14 +5,7 @@
     </p>
     <% account.categories.each do |category|  %>
       <strong><%= category.name %></strong><br>
-      <ul>
-        <% category.option_field.split("\n").each do |option| %>
-        <li>
-          <%= option %>
-        </li>
-        <% end %>
-      </ul>
-      <%= link_to 'Edit', edit_category_path(category) %>
+      <%= render "select_options/table", category: category %>
     <% end %>
   </div>
 </div>

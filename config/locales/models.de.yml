@@ -10,6 +10,12 @@ de:
       account:
         one: "Konto"
         other: "Konten"
+      category:
+        one: "Kategorie"
+        other: "Kategorien"
+      select_option:
+        one: "Auswahl-Option"
+        other: "Auswahl-Optionen"
     attributes:
       user:
         email: "e-Mail"

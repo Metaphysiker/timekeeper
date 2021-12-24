@@ -117,7 +117,15 @@ class Account < ApplicationRecord
   end
 
   def add_category_project_to_account
-    category = Category.create(account_id: self.id, name: I18n.t("project"))
+    category = Category.create(account_id: self.id, name: I18n.t("category"))
+    SelectOption.create(name: I18n.t("project1"), category_id: category.id)
+    SelectOption.create(name: I18n.t("project2"), category_id: category.id)
+    SelectOption.create(name: I18n.t("project3"), category_id: category.id)
+    SelectOption.create(name: I18n.t("customer_care"), category_id: category.id)
+    SelectOption.create(name: I18n.t("administration"), category_id: category.id)
+    SelectOption.create(name: I18n.t("social_media"), category_id: category.id)
+    SelectOption.create(name: I18n.t("workshops"), category_id: category.id)
+    SelectOption.create(name: I18n.t("miscellaneous"), category_id: category.id)
   end
 
   def create_hash_with_distinct_values_of_a_category(category, records)

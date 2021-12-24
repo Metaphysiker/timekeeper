@@ -71,6 +71,16 @@ de:
   year-interval: "in Jahren"
   project: "Projekt"
   empty: "leer"
+  category: "Kategorie"
+  project1: "Projekt 1"
+  project2: "Projekt 2"
+  project3: "Projekt 3"
+  customer_care: "Kundendienst & Support"
+  administration: "Planung & Administration"
+  social_media: "Social Media & Website"
+  workshops: "Workshops & Events"
+  miscellaneous: "Diverses"
+  manage_categories: "Kategorien verwalten"
   errors:
     messages:
       blank: "muss ausgefüllt werden"
