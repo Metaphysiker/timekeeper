@@ -1,12 +1,18 @@
-<div class="standard-card ">
+
   <div class="card-body">
     <h5 class="card-title"><%= t("manage_categories") %></h5>
     <p class="card-text">
     </p>
     <% account.categories.each do |category|  %>
-      <strong><%= category.name %></strong><br>
-      <%= render "select_options/table", category: category %>
+      <div>
+        <strong><%= category.name %></strong><br>
+        <%= render "select_options/table", category: category %>
+      </div>
     <% end %>
+
+    <strong>
+      <%= Category.human_attribute_name("add", category: Category.model_name.human) %>
+    </strong>
+    <%= render 'categories/form', category: Category.new, account: account %>
+
   </div>
-  <%= render 'categories/form', category: Category.new, account: account %>
-</div>

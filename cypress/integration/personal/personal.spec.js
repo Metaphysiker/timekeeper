@@ -9,12 +9,18 @@ describe('welcomes user', () => {
     cy.request('http://localhost:3000/test/destroy_all_accounts')
     cy.request('http://localhost:3000/test/destroy_all_work_times')
     cy.request('http://localhost:3000/test/destroy_all_categories')
+    cy.request('http://localhost:3000/test/destroy_all_select_options')
 
     cy.request('http://localhost:3000/test/create_users_only_json/users_only_json')
+
     cy.request('http://localhost:3000/test/create_work_times_only_json/work_times_first_batch')
     cy.request('http://localhost:3000/test/create_work_times_only_json/work_times_second_batch')
+
     cy.request('http://localhost:3000/test/create_categories_only_json/categories_first_batch')
     cy.request('http://localhost:3000/test/create_categories_only_json/categories_second_batch')
+
+    cy.request('http://localhost:3000/test/create_select_options_only_json/select_options_first_batch')
+    cy.request('http://localhost:3000/test/create_select_options_only_json/select_options_second_batch')
   })
 
   it('signs up, records working hours and edits them', () => {
@@ -28,13 +34,20 @@ describe('welcomes user', () => {
     //});
 
     cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
-      //creates categories
-      cy.get("[data-cy=manage_categories]").click();
-      for (var index = 0; index < categories.length; index++) {
-        cy.fill_in_category_form(categories[index]);
-      }
 
+        //creates categories
+        cy.get("[data-cy=manage_categories]").click();
+        for (var index = 0; index < categories.length; index++) {
 
+          cy.fill_in_category_form(categories[index]);
+
+              cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+                for (var inner_index = 0; inner_index < select_options.length; inner_index++) {
+                  cy.fill_in_select_option_form(select_options[inner_index]);
+                }
+              });
+
+        }
 
     });
 

@@ -79,7 +79,7 @@ class TestController < ApplicationController
       end
 
       categories_json = []
-      10.times do
+      3.times do
         categories = OpenStruct.new(
           name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
           #account_id: Account.first.id
@@ -88,6 +88,26 @@ class TestController < ApplicationController
       end
 
       File.write("cypress/fixtures/#{name_of_file}.json", categories_json.to_json)
+      head :ok
+    end
+
+    def create_select_options_only_json
+
+      name_of_file = "select_options_json"
+      if params["name_of_file"].present?
+        name_of_file = params[:name_of_file]
+      end
+
+      select_options_json = []
+      3.times do
+        select_options = OpenStruct.new(
+          name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+          #account_id: Account.first.id
+        )
+        select_options_json.push(select_options.to_h)
+      end
+
+      File.write("cypress/fixtures/#{name_of_file}.json", select_options_json.to_json)
       head :ok
     end
 
@@ -132,6 +152,11 @@ class TestController < ApplicationController
     end
 
     def destroy_all_categories
+      Category.destroy_all
+      head :ok
+    end
+
+    def destroy_all_select_options
       Category.destroy_all
       head :ok
     end

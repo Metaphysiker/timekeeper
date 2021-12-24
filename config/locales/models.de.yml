@@ -25,6 +25,8 @@ de:
         updated_successfully: "wurde erfolgreich bearbeitet."
         destroyed_successfully: "wurde erfolgreich gelöscht."
       category:
+        enter: "%{category} eintragen"
+        add: "%{category} hinzufügen"
         name: "Name"
         name_placeholder: "z.B. Home-Office, Ehrenamtlich, Projekt, Ferien"
         information_about_categories: "Kategorien und ihre Auswahl-Optionen können hier bearbeitet werden: "

@@ -19,6 +19,7 @@ import './login-commands'
 import './signup-commands'
 import './worktime_commands'
 import './category_commands'
+import './select_option_commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
