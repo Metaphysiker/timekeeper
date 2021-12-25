@@ -1,4 +1,4 @@
-class WorkTimePolicy < ApplicationPolicy
+class CategoryPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -29,6 +29,7 @@ class WorkTimePolicy < ApplicationPolicy
   def destroy?
     record.account.user == user
   end
+
 
   class Scope < Scope
     def resolve

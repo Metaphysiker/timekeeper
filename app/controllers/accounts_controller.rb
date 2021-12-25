@@ -1,42 +1,50 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy area_chart_data donut_chart_data data_overview manage_categories]
   before_action :set_start_and_end_date, only: %i[show data_overview]
+  after_action :verify_authorized
 
 
   def my_accounts
-    if params[:user_id].present?
-      @user = User.find(params[:user_id])
-    else
-      @user = current_user
-    end
+    #if params[:user_id].present?
+    #  @user = User.find(params[:user_id])
+    #else
+    #  @user = current_user
+    #end
+
+    @user = current_user
+    authorize Account
   end
 
   def manage_categories
-
+    authorize @account
   end
 
   # GET /accounts or /accounts.json
   def index
+    authorize Account
     @accounts = Account.all
   end
 
   # GET /accounts/1 or /accounts/1.json
   def show
-
+    authorize @account
   end
 
   # GET /accounts/new
   def new
     @account = Account.new
+    authorize @account
   end
 
   # GET /accounts/1/edit
   def edit
+    authorize @account
   end
 
   # POST /accounts or /accounts.json
   def create
     @account = Account.new(account_params)
+    authorize @account
 
     respond_to do |format|
       if @account.save
@@ -51,6 +59,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
+    authorize @account
     respond_to do |format|
       if @account.update(account_params)
         format.html { redirect_to @account, notice: "Account was successfully updated." }
@@ -64,6 +73,7 @@ class AccountsController < ApplicationController
 
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
+    authorize @account
     @account.destroy
     respond_to do |format|
       format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
@@ -72,10 +82,12 @@ class AccountsController < ApplicationController
   end
 
   def data_overview
+    authorize @account
     render layout: false
   end
 
   def area_chart_data
+    authorize @account
     render json: @account.area_chart_data(
       interval: params[:interval],
       start_date: params[:start_date],
@@ -84,6 +96,7 @@ class AccountsController < ApplicationController
   end
 
   def donut_chart_data
+    authorize @account
     render json: @account.donut_chart_data(
       start_date: params[:start_date],
       end_date: params[:end_date],

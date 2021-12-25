@@ -82,6 +82,7 @@ de:
   miscellaneous: "Diverses"
   manage_categories: "Kategorien verwalten"
   select_category: "%{category} auswählen"
+  you_are_not_authorized_to_perform_this_action: "Sie haben nicht die Berechtigung, diese Aktion durchzuführen"
   errors:
     messages:
       blank: "muss ausgefüllt werden"

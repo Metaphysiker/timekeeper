@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :user_roles
   has_many :roles, through: :user_roles
 
+  def admin?
+   roles.where(name: "admin").exists?
+  end
+
   after_create :add_personal_account_to_user
 
   private
