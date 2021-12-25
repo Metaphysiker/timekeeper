@@ -35,7 +35,7 @@ describe('welcomes user', () => {
 
     cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
         //creates categories
-        cy.get("[data-cy=manage_categories]").click();
+        cy.get("[data-cy=manage_categories]").first().click();
         for (var index = 0; index < categories.length; index++) {
           cy.fill_in_category_form(categories[index]);
 
@@ -66,6 +66,17 @@ describe('welcomes user', () => {
         //for (var index = 0; index < work_times.length; index++) {
         //  cy.edit_work_time(work_times[index], new_work_times[index]);
         //}
+        cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+          cy.readFile('cypress/fixtures/categories_second_batch.json').then((new_categories) => {
+
+            for (var index = 0; index < categories.length; index++) {
+              cy.edit_category(categories[index], new_categories[index]);
+            }
+
+          });
+        });
+
+
         cy.get("[data-cy=back]").first().click();
 
 

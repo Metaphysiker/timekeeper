@@ -12,7 +12,7 @@ class TestController < ApplicationController
     end
 
     def create_users
-      10.times do
+      3.times do
         create_fake_user("no_role")
       end
 
@@ -22,7 +22,7 @@ class TestController < ApplicationController
     end
 
     def create_accounts
-      10.times do
+      3.times do
         create_fake_accounts
       end
 
@@ -31,7 +31,7 @@ class TestController < ApplicationController
     end
 
     def create_work_times
-      10.times do
+      3.times do
         create_fake_work_time
       end
 
@@ -40,7 +40,7 @@ class TestController < ApplicationController
     end
 
     def create_categories
-      10.times do
+      3.times do
         create_fake_categories
       end
 
@@ -56,7 +56,7 @@ class TestController < ApplicationController
       end
 
       work_times_json = []
-      10.times do
+      3.times do
         work_time = OpenStruct.new(
           task: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
           minutes: rand(1..60),
@@ -119,7 +119,7 @@ class TestController < ApplicationController
       end
 
       user_json = []
-      10.times do
+      3.times do
         user = OpenStruct.new(
           email: Faker::Internet.unique.email,
           password: "password",
