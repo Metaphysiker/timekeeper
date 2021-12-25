@@ -12,13 +12,15 @@
             <%= select_option.name %>
           </td>
           <td>
-            <%= link_to edit_select_option_path(select_option), class: "action_button", data: { cy: "edit_select_option" } do %>
-            <i class="bi bi-pencil-square"></i> <%= t("edit") %>
-          <% end %>
-            <br>
-            <%= link_to select_option, method: :delete, data: { confirm: 'Are you sure?', cy: "delete_select_option" }, class: "action_delete_button" do %>
-              <i class="bi bi-x-square"></i> <%= t("delete") %>
+            <div class="d-grid gap-0">
+              <%= link_to edit_select_option_path(select_option), class: "action_button", data: { cy: "edit_select_option" } do %>
+              <i class="bi bi-pencil-square"></i> <%= t("edit") %>
             <% end %>
+              <br>
+              <%= link_to select_option, method: :delete, data: { confirm: 'Are you sure?', cy: "delete_select_option" }, class: "action_delete_button" do %>
+                <i class="bi bi-x-square"></i> <%= t("delete") %>
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>

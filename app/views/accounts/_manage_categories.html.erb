@@ -1,6 +1,8 @@
-  <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>
 
   <div class="card-body">
+    <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>
+    <br><br>
+
     <h5 class="card-title"><%= t("manage_categories") %></h5>
     <p class="card-text">
     </p>
@@ -9,11 +11,15 @@
         <strong><%= category.name %></strong><br>
         <%= render "select_options/table", category: category %>
       </div>
+      <hr>
     <% end %>
 
-    <strong>
-      <%= Category.human_attribute_name("add", category: Category.model_name.human) %>
-    </strong>
-    <%= render 'categories/form', category: Category.new, account: account %>
+
+      <h5 class="card-title"><%= Category.human_attribute_name("add", category: Category.model_name.human) %></h5>
+
+      <%= render 'categories/form', category: Category.new, account: account %>
+
+      <br><br>
+      <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>
 
   </div>

@@ -120,7 +120,7 @@
   color: white;
   font-size: 0.8rem;
   //font-weight: bold;
-  @extend .my-2 !optional;
+  @extend .mb-1 !optional;
   //@extend .text-e-color !optional;
   &:hover{
     color: #ffffff;
@@ -139,7 +139,7 @@
   color: white;
   font-size: 0.8rem;
   //font-weight: bold;
-  @extend .my-2 !optional;
+  @extend .mb-1 !optional;
   //@extend .text-e-color !optional;
   &:hover{
     color: #ffffff;
