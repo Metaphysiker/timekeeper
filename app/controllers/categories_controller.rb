@@ -36,8 +36,16 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
+    original_category_name = @category.name
     respond_to do |format|
       if @category.update(category_params)
+        @category.account.work_times.where("(categories->'#{original_category_name}') is not null").each do |work_time|
+          #byebug
+          categories = work_time.categories
+          categories.store(@category.name, categories[original_category_name])
+          categories.delete(original_category_name)
+          work_time.update(categories: categories)
+        end
         format.html { redirect_to manage_categories_account_path(@category.account), notice: "#{Category.model_name.human} #{Category.human_attribute_name("category_updated_successfully")}" }
         format.json { render :show, status: :ok, location: @category }
       else
