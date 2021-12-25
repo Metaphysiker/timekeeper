@@ -49,6 +49,8 @@ describe('welcomes user', () => {
 
         }
 
+      cy.get("[data-cy=back]").click();
+
     });
 
     cy.readFile('cypress/fixtures/work_times_first_batch.json').then((work_times) => {

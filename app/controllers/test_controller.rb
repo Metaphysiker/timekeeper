@@ -81,7 +81,7 @@ class TestController < ApplicationController
       categories_json = []
       3.times do
         categories = OpenStruct.new(
-          name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+          name: Faker::Lorem.characters(number: 10),
           #account_id: Account.first.id
         )
         categories_json.push(categories.to_h)
@@ -101,7 +101,7 @@ class TestController < ApplicationController
       select_options_json = []
       3.times do
         select_options = OpenStruct.new(
-          name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+          name: Faker::Lorem.characters(number: 12),
           #account_id: Account.first.id
         )
         select_options_json.push(select_options.to_h)
@@ -183,7 +183,7 @@ class TestController < ApplicationController
 
     def create_fake_category
       Category.create(
-        name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+        name: Faker::Lorem.characters(number: 10),
         account_id: Account.first.id,
       )
     end
