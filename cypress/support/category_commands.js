@@ -38,16 +38,16 @@ Cypress.Commands.add('edit_category', (old_category, category) => {
     })
 })
 
-Cypress.Commands.add('delete_category', (work_time) => {
+Cypress.Commands.add('delete_category', (category) => {
 
-  cy.contains(work_time["task"]).should("be.visible").parent().within(($parent) => {
-    cy.get("[data-cy=delete_work_time]").click();
+  cy.contains(category["name"]).should("be.visible").parent().within(($parent) => {
+    cy.get("[data-cy=delete_category]").click({force: true});
   })
 
   cy.fixture('locales/models.de.json').should((de) => {
-    cy.contains(de["de"]["activerecord"]["attributes"]["work_time"]["work_time_destroyed_successfully"]).should("be.visible");
+    cy.contains(de["de"]["activerecord"]["attributes"]["category"]["category_destroyed_successfully"]).should("be.visible");
   });
 
-  cy.contains(work_time["task"]).should('not.exist');
+  cy.contains(category["name"]).should('not.exist');
 
 })

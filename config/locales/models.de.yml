@@ -29,7 +29,7 @@ de:
         add: "%{category} hinzufügen"
         edit: "%{category} bearbeiten"
         name: "Name"
-        name_placeholder: "z.B. Home-Office, Ehrenamtlich, Projekt, Ferien"
+        name_placeholder: "z.B. Bereich, Home-Office, Ehrenamtlich, Projekt, Ferien"
         information_about_categories: "Kategorien und ihre Auswahl-Optionen können hier bearbeitet werden: "
         category_created_successfully: "wurde erfolgreich eingetragen."
         category_updated_successfully: "wurde erfolgreich bearbeitet."

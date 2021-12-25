@@ -73,6 +73,10 @@ describe('welcomes user', () => {
               cy.edit_category(categories[index], new_categories[index]);
             }
 
+            for (var index = 0; index < categories.length; index++) {
+              cy.delete_category(new_categories[index]);
+            }
+
           });
         });
 
