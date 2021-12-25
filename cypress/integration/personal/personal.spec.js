@@ -1,4 +1,4 @@
-describe('welcomes user', () => {
+describe('personal', () => {
 
   before(() => {
     cy.visit('http://localhost:3000/test/generate_json_of_translation')
@@ -79,8 +79,6 @@ describe('welcomes user', () => {
 
           });
         });
-
-
         cy.get("[data-cy=back]").first().click();
 
 
@@ -95,4 +93,65 @@ describe('welcomes user', () => {
     cy.logout();
 
     })
+
+    it('checks whether renaming a category keeps information of the original category', () => {
+
+      cy.readFile('cypress/fixtures/users_only_json.json').then((users) => {
+        cy.sign_up_and_go_to_personal_account(users[0]);
+      });
+
+      cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+          //creates categories
+          cy.get("[data-cy=manage_categories]").first().click();
+          for (var index = 0; index < categories.length; index++) {
+            cy.fill_in_category_form(categories[index]);
+
+                cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+                  for (var inner_index = 0; inner_index < select_options.length; inner_index++) {
+                    cy.fill_in_select_option_form(select_options[inner_index]);
+                  }
+                });
+          }
+        cy.get("[data-cy=back]").first().click();
+      });
+
+      cy.readFile('cypress/fixtures/work_times_first_batch.json').then((work_times) => {
+        //creates work_times
+        for (var index = 0; index < work_times.length; index++) {
+          cy.fill_in_work_time_form(work_times[index]);
+        }
+      });
+
+      //edits categories
+      cy.get("[data-cy=manage_categories]").first().click();
+      //for (var index = 0; index < work_times.length; index++) {
+      //  cy.edit_work_time(work_times[index], new_work_times[index]);
+      //}
+      cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+        cy.readFile('cypress/fixtures/categories_second_batch.json').then((new_categories) => {
+
+          for (var index = 0; index < categories.length; index++) {
+            cy.edit_category(categories[index], new_categories[index]);
+          }
+
+
+        });
+      });
+      cy.get("[data-cy=back]").first().click();
+
+      cy.readFile('cypress/fixtures/categories_second_batch.json').then((categories) => {
+        cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+
+        for (var cat_index = 0; cat_index < categories.length; cat_index++) {
+          var category_name = categories[cat_index].name;
+          var select_option_name = select_options[cat_index].name;
+
+          cy.get("[data-category=" + category_name + "]").contains(select_option_name).should("be.visible");
+
+          }
+        })
+      })
+
+    });
+
 });
