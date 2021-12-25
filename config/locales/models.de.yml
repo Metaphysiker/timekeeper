@@ -27,6 +27,7 @@ de:
       category:
         enter: "%{category} eintragen"
         add: "%{category} hinzufügen"
+        edit: "%{category} bearbeiten"
         name: "Name"
         name_placeholder: "z.B. Home-Office, Ehrenamtlich, Projekt, Ferien"
         information_about_categories: "Kategorien und ihre Auswahl-Optionen können hier bearbeitet werden: "

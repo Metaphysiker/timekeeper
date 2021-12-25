@@ -3,23 +3,29 @@
     <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>
     <br><br>
 
-    <h5 class="card-title"><%= t("manage_categories") %></h5>
+    <div class="border rounded">
+      <h5 class="card-title"><%= t("manage_categories") %></h5>
+    </div>
     <p class="card-text">
     </p>
     <% account.categories.each do |category|  %>
       <div>
         <strong><%= category.name %></strong><br>
+        <%= link_to t("edit"), edit_category_path(category), data: { cy: "edit_category" } %>
+        <%= link_to t("delete"), category, method: :delete, data: { cy: "delete_category", confirm: 'Are you sure?' } %>
         <%= render "select_options/table", category: category %>
       </div>
       <hr>
     <% end %>
 
-
-      <h5 class="card-title"><%= Category.human_attribute_name("add", category: Category.model_name.human) %></h5>
-
-      <%= render 'categories/form', category: Category.new, account: account %>
-
-      <br><br>
-      <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>
-
   </div>
+
+  <div class="border rounded">
+    <h5 class="card-title"><%= Category.human_attribute_name("add", category: Category.model_name.human) %></h5>
+
+    <%= render 'categories/form', category: Category.new, account: account %>
+
+    <br><br>
+  </div>
+
+  <%= link_to t("back"), account_path(account), class: "primary-button", data: { cy: "back" } %>

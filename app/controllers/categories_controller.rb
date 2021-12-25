@@ -59,7 +59,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: "#{Category.model_name.human} #{Category.human_attribute_name("category_destroyed_successfully")}" }
+      format.html { redirect_to manage_categories_account_path(@category.account), notice: "#{Category.model_name.human} #{Category.human_attribute_name("category_destroyed_successfully")}" }
       format.json { head :no_content }
     end
   end

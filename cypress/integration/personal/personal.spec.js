@@ -45,7 +45,7 @@ describe('welcomes user', () => {
                 }
               });
         }
-      cy.get("[data-cy=back]").click();
+      cy.get("[data-cy=back]").first().click();
     });
 
     cy.readFile('cypress/fixtures/work_times_first_batch.json').then((work_times) => {
@@ -54,18 +54,25 @@ describe('welcomes user', () => {
         cy.fill_in_work_time_form(work_times[index]);
       }
 
-      //edits work_times
       cy.readFile('cypress/fixtures/work_times_second_batch.json').then((new_work_times) => {
+
+        //edits work_times
         for (var index = 0; index < work_times.length; index++) {
           cy.edit_work_time(work_times[index], new_work_times[index]);
         }
+
+        //edits categories
+        cy.get("[data-cy=manage_categories]").first().click();
+        //for (var index = 0; index < work_times.length; index++) {
+        //  cy.edit_work_time(work_times[index], new_work_times[index]);
+        //}
+        cy.get("[data-cy=back]").first().click();
+
 
         //deletes work_times
         for (var index = 0; index < work_times.length; index++) {
           cy.delete_work_time(new_work_times[index]);
         }
-
-
       });
 
     });
