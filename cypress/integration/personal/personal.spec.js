@@ -34,11 +34,9 @@ describe('welcomes user', () => {
     //});
 
     cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
-
         //creates categories
         cy.get("[data-cy=manage_categories]").click();
         for (var index = 0; index < categories.length; index++) {
-
           cy.fill_in_category_form(categories[index]);
 
               cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
@@ -46,11 +44,8 @@ describe('welcomes user', () => {
                   cy.fill_in_select_option_form(select_options[inner_index]);
                 }
               });
-
         }
-
       cy.get("[data-cy=back]").click();
-
     });
 
     cy.readFile('cypress/fixtures/work_times_first_batch.json').then((work_times) => {

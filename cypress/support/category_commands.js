@@ -15,7 +15,7 @@ Cypress.Commands.add('fill_in_category_form', (category) => {
   })
 })
 
-Cypress.Commands.add('edit_work_time', (old_work_time, work_time) => {
+Cypress.Commands.add('edit_category', (old_work_time, work_time) => {
 
   var date_regex = /\d\d\d\d-\d\d-\d\d/gm
   var extracted_date = work_time.datetime.match(date_regex)[0];
@@ -50,7 +50,7 @@ Cypress.Commands.add('edit_work_time', (old_work_time, work_time) => {
   })
 })
 
-Cypress.Commands.add('delete_work_time', (work_time) => {
+Cypress.Commands.add('delete_category', (work_time) => {
 
   cy.contains(work_time["task"]).should("be.visible").parent().within(($parent) => {
     cy.get("[data-cy=delete_work_time]").click();

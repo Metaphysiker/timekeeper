@@ -20,7 +20,7 @@
         <td><%= work_time.task %></td>
         <td><%= WorkTime.in_hours(work_time.minutes) %></td>
         <% account.categories.each do |category| %>
-          <td><%= work_time.categories[category.name] unless work_time.categories[category.name].blank? %></td>
+          <td data-category="<%= category.name %>"><%= work_time.categories[category.name] unless work_time.categories[category.name].blank? %></td>
         <% end %>
         <td> <%= link_to edit_work_time_path(work_time), class: "action_button", data: { cy: "edit_work_time" } do %>
           <i class="bi bi-pencil-square"></i> <%= t("edit") %>

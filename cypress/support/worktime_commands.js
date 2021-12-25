@@ -13,7 +13,6 @@ Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
       cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
 
       for (var cat_index = 0; cat_index < categories.length; cat_index++) {
-        cy.log(cat_index);
           cy.get('#work_time_categories_' + categories[cat_index].name).select(select_options[cat_index].name);
         }
       })
@@ -35,6 +34,20 @@ Cypress.Commands.add('fill_in_work_time_form', (work_time) => {
     cy.contains(extracted_date.split("-")[1]).should("be.visible");
     cy.contains(extracted_date.split("-")[0]).should("be.visible");
     //cy.contains(work_time["categories"][Object.keys(work_time["categories"])[0]]).should("be.visible");
+
+    cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+      cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+
+      for (var cat_index = 0; cat_index < categories.length; cat_index++) {
+        var category_name = categories[cat_index].name;
+        var select_option_name = select_options[cat_index].name;
+
+        cy.get("[data-category=" + category_name + "]").contains(select_option_name).should("be.visible");
+
+        }
+      })
+    })
+
   })
 })
 
@@ -53,7 +66,18 @@ Cypress.Commands.add('edit_work_time', (old_work_time, work_time) => {
       cy.get('#work_time_datetime_3i').select(Number(extracted_date.split("-")[2]).toString());
       cy.get('#work_time_datetime_2i').select(Number(extracted_date.split("-")[1]).toString());
       cy.get('#work_time_datetime_1i').select(Number(extracted_date.split("-")[0]).toString());
-      cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).select(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+      //cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).select(work_time["categories"][Object.keys(work_time["categories"])[0]]);
+
+      cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+        cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+
+        for (var cat_index = 0; cat_index < categories.length; cat_index++) {
+          cy.log(cat_index);
+          //selects next option: (cat_index + 1) % select_options.length
+            cy.get('#work_time_categories_' + categories[cat_index].name).select(select_options[(cat_index + 1) % select_options.length].name);
+          }
+        })
+      })
 
       //cy.get('#work_time_categories_' + [Object.keys(work_time["categories"])[0]]).clear().type(work_time["categories"][Object.keys(work_time["categories"])[0]]);
       cy.root().submit()
@@ -69,7 +93,21 @@ Cypress.Commands.add('edit_work_time', (old_work_time, work_time) => {
     cy.contains(extracted_date.split("-")[2]).should("be.visible");
     cy.contains(extracted_date.split("-")[1]).should("be.visible");
     cy.contains(extracted_date.split("-")[0]).should("be.visible");
-    cy.contains(work_time["categories"][Object.keys(work_time["categories"])[0]]).should("be.visible");
+    //cy.contains(work_time["categories"][Object.keys(work_time["categories"])[0]]).should("be.visible");
+
+    cy.readFile('cypress/fixtures/categories_first_batch.json').then((categories) => {
+      cy.readFile('cypress/fixtures/select_options_first_batch.json').then((select_options) => {
+
+      for (var cat_index = 0; cat_index < categories.length; cat_index++) {
+        var category_name = categories[cat_index].name;
+        var select_option_name = select_options[(cat_index + 1) % select_options.length].name;
+
+        cy.get("[data-category=" + category_name + "]").contains(select_option_name).should("be.visible");
+
+        }
+      })
+    })
+
   })
 })
 
