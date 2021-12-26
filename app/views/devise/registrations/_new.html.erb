@@ -1,5 +1,5 @@
 <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { data: { cy: "form_for_registration" }} do |f| %>
-<h5><u><%= t("signup") %></u></h5>
+<h1><%= t("signup") %></h1>
 <p>
   <%= f.input :email%>
   <br>
@@ -7,5 +7,5 @@
   <br />
   <%= f.input :password_confirmation %>
 </p>
-  <%= f.submit "Anmelden", class: "btn btn-light border my-2" %>
+  <%= f.submit "Anmelden", class: "primary-button" %>
 <% end %>

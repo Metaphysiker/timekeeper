@@ -1,11 +1,9 @@
-<main class="mt-4 text-center flex-shrink-0">
-<div class="container p-3">
-    <h1 class="mb-4"><%= @page_title %></h1>
+<main class="container main_center">
+    <h1><%= @page_title %></h1>
     <p class="lead">
       <%= @page_description %>
     </p>
-    <p class="lead">
-      <%= link_to t('get_started'), new_user_registration_path, class:"primary-button" %>
+    <p>
+      <%= link_to t('try_free'), new_user_registration_path, class:"primary-button" %>
     </p>
-</div>
 </main>

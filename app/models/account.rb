@@ -117,7 +117,7 @@ class Account < ApplicationRecord
   end
 
   def add_category_project_to_account
-    category = Category.create(account_id: self.id, name: I18n.t("category"))
+    category = Category.create(account_id: self.id, name: I18n.t("area"))
     SelectOption.create(name: I18n.t("project1"), category_id: category.id)
     SelectOption.create(name: I18n.t("project2"), category_id: category.id)
     SelectOption.create(name: I18n.t("project3"), category_id: category.id)

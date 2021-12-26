@@ -1,0 +1,20 @@
+@import "variables";
+
+.main_center {
+  @extend .p-3 !optional;
+  @extend .mt-4 !optional;
+  @extend .text-center !optional;
+
+  h1 {
+    @extend .mb-4 !optional;
+  }
+}
+
+.main_left {
+  @extend .p-3 !optional;
+  @extend .mt-4 !optional;
+
+  h1 {
+    @extend .mb-4 !optional;
+  }
+}

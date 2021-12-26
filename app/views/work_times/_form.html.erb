@@ -9,6 +9,9 @@
     <%= f.input :minutes, placeholder: WorkTime.human_attribute_name("minutes_placeholder") %>
     <%= f.input :datetime, discard_hour: true %>
 
+    <p class="mt-2 mb-0">
+      <strong><%= Category.model_name.human(count: 2) %> </strong>
+    </p>
     <div class="information_box">
       <div class="row">
         <div class="col-2 col-md-1 d-flex flex-column justify-content-center align-items-center">

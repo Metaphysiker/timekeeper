@@ -1,7 +1,7 @@
-<div class="container">
-<h1><%= t("edit_work_time") %></h1>
+<main class="container main_left">
+<h1><%= WorkTime.human_attribute_name("edit", work_time: WorkTime.model_name.human) %></h1>
 
 <%= render 'form', work_time: @work_time %>
 
 <%= link_to t("back"), account_path(@work_time.account), class: "secondary-button" %>
-</div>
+</main>
