@@ -1,4 +1,10 @@
-<main class="container main_center">
+    <% if user_signed_in? %>
+    <main class="main_left">
+      <%= render 'accounts/my_accounts', user: current_user %>
+    </main>
+    <% else %>
+    <main class="container main_center">
+
     <h1><%= @page_title %></h1>
     <p class="lead">
       <%= @page_description %>
@@ -6,4 +12,5 @@
     <p>
       <%= link_to t('try_free'), new_user_registration_path, class:"primary-button" %>
     </p>
-</main>
+    </main>
+    <% end %>

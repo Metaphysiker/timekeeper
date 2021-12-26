@@ -1,6 +1,4 @@
-<h1>Editing Account</h1>
-
-<%= render 'form', account: @account %>
-
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', accounts_path %>
+<div class="container">
+  <h1><%= Account.human_attribute_name("edit", account: Account.model_name.human) %></h1>
+  <%= render 'form', account: @account %>
+</div>

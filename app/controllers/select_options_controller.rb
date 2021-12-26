@@ -59,7 +59,7 @@ class SelectOptionsController < ApplicationController
     authorize @select_option
     @select_option.destroy
     respond_to do |format|
-      format.html { redirect_to select_options_url, notice: "Select option was successfully destroyed." }
+      format.html { redirect_to manage_categories_account_path(@select_option.category.account), notice: "#{SelectOption.model_name.human} #{SelectOption.human_attribute_name("destroyed_successfully")}" }
       format.json { head :no_content }
     end
   end

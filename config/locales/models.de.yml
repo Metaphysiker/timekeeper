@@ -19,6 +19,8 @@ de:
     attributes:
       select_option:
         enter: "%{select_option} eintragen"
+        add: "%{select_option} hinzufügen"
+        edit: "%{select_option} bearbeiten"
         name: "Name"
         name_placeholder: "z.B. Projekt Alpha, Kampagne Beta, Programm Gamma, Ja, Nein"
         created_successfully: "wurde erfolgreich eingetragen."
@@ -38,6 +40,9 @@ de:
         email: "e-Mail"
         password: "Passwort"
       account:
+        enter: "%{account} eintragen"
+        add: "%{account} hinzufügen"
+        edit: "%{account} bearbeiten"
         name: "Name"
         edit_account: "Konto bearbeiten"
         create_new_account: "Neues Konto erstellen"

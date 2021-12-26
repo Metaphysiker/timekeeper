@@ -1,6 +1,4 @@
-<h1>Editing Select Option</h1>
-
-<%= render 'form', select_option: @select_option %>
-
-<%= link_to 'Show', @select_option %> |
-<%= link_to 'Back', select_options_path %>
+<div class="container">
+  <h1><%= SelectOption.human_attribute_name("edit", select_option: SelectOption.model_name.human) %></h1>
+  <%= render 'form', select_option: @select_option %>
+</div>
