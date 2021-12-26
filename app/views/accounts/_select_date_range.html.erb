@@ -44,6 +44,8 @@
   $(document).ready(function() {
 
     $( ".select_date_range_button" ).click(function() {
+      var work_time_start_date = $('#work_time_start_date').val();
+      var work_time_end_date = $('#work_time_end_date').val();
       //window.location.replace("<%= account_path(account) %>" + "/" + $('#work_time_start_date').val() + "/" + $('#work_time_end_date').val());
       $(".data_overview").empty();
       $(".data_overview").html(spinner_html);
@@ -54,8 +56,8 @@
         data: {
           id: account.id,
           interval: "P1W",
-          start_date: $('#work_time_start_date').val(),
-          end_date: $('#work_time_end_date').val()
+          start_date: work_time_start_date,
+          end_date: work_time_end_date
         }
       }).done(function( data ) {
 
