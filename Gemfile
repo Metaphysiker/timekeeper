@@ -9,6 +9,7 @@ gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
 gem 'devise-i18n'
 gem 'simple_form'
 gem 'devise'
+gem 'sassc', '~> 2.1.0'
 
 gem 'meta-tags'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
