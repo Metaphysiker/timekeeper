@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin_area/users'
   resources :select_options
   resources :categories
   resources :roles
