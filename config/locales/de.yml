@@ -63,6 +63,7 @@ de:
   this_month: "Diesen Monat"
   this_year: "Dieses Jahr"
   this_account: "Alles"
+  altogether: "insgesamt"
   select_date_range: "Datumsbereich auswählen"
   apply_date_range: "Datumsbereich anwenden"
   start_date: "von"

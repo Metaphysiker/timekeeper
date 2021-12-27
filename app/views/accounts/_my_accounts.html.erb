@@ -14,11 +14,13 @@
           <div class="card-body">
             <h5 class="card-title"><%= account.name %></h5>
             <p class="card-text">
-              <%= t("this_week") %>: <%= account.work_times.sum(:minutes) %>
+              <%= t("this_week") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_week..Date.today.end_of_week).sum(:minutes)) %>
               <br />
-              <%= t("this_month") %>: <%= account.work_times.sum(:minutes) %>
+              <%= t("this_month") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_month..Date.today.end_of_month).sum(:minutes)) %>
               <br />
-              <%= t("this_year") %>: <%= account.work_times.sum(:minutes) %>
+              <%= t("this_year") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_year..Date.today.end_of_year).sum(:minutes)) %>
+              <br />
+              <%= t("altogether").capitalize %>: <%= WorkTime.in_hours(account.work_times.sum(:minutes)) %>
             </p>
             <%= link_to t("select"), account_path(account), class: "primary-button", data: { cy: "select_account" } %>
             <%#= link_to Account.human_attribute_name("edit_account"), edit_account_path(account), class: "secondary-button", data: { cy: "select_this_account" } %>

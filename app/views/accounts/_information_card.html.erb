@@ -4,11 +4,13 @@
     <div class="row">
       <div class="col-12 col-sm-6">
         <p class="card-text">
-          <%= t("this_week") %>: <%= WorkTime.in_hours(account.work_times.sum(:minutes)) %>
+          <%= t("this_week") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_week..Date.today.end_of_week).sum(:minutes)) %>
           <br />
-          <%= t("this_month") %>: <%= account.work_times.sum(:minutes) %>
+          <%= t("this_month") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_month..Date.today.end_of_month).sum(:minutes)) %>
           <br />
-          <%= t("this_year") %>: <%= account.work_times.sum(:minutes) %>
+          <%= t("this_year") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_year..Date.today.end_of_year).sum(:minutes)) %>
+          <br />
+          <%= t("altogether").capitalize %>: <%= WorkTime.in_hours(account.work_times.sum(:minutes)) %>
         </p>
       </div>
       <div class="col-12 col-sm-6">

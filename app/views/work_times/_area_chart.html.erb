@@ -1,15 +1,16 @@
+<% area_chart_data_interval = cookies[:area_chart_data_interval].blank? ? "P1W" : cookies[:area_chart_data_interval] %>
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link select-interval-element" data-interval="P1D" aria-current="page"><%= t("day-interval") %></a>
+      <a class="nav-link select-interval-element <%= "active" if area_chart_data_interval == "P1D" %>" data-interval="P1D" aria-current="page"><%= t("day-interval") %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link select-interval-element active" data-interval="P1W"><%= t("week-interval") %></a>
+      <a class="nav-link select-interval-element <%= "active" if area_chart_data_interval == "P1W" %>" data-interval="P1W"><%= t("week-interval") %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link select-interval-element" data-interval="P1M"><%= t("month-interval") %></a>
+      <a class="nav-link select-interval-element <%= "active" if area_chart_data_interval == "P1M" %>" data-interval="P1M"><%= t("month-interval") %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link select-interval-element"  data-interval="P1Y"><%= t("year-interval") %></a>
+      <a class="nav-link select-interval-element <%= "active" if area_chart_data_interval == "P1Y" %>"  data-interval="P1Y"><%= t("year-interval") %></a>
     </li>
   </ul>
 
@@ -26,7 +27,7 @@
 <script type="text/javascript">
 
   var account = <%= raw @account.to_json %>;
-  var interval = "P1M";
+  var interval = "<%= cookies[:area_chart_data_interval].blank? ? "P1W" : cookies[:area_chart_data_interval] %>";
   var cachedWidth = $( window ).width();
 
   var spinner_html = `

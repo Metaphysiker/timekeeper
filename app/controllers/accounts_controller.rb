@@ -88,6 +88,7 @@ class AccountsController < ApplicationController
 
   def area_chart_data
     authorize @account
+    cookies[:area_chart_data_interval] = params[:interval]
     render json: @account.area_chart_data(
       interval: params[:interval],
       start_date: params[:start_date],
