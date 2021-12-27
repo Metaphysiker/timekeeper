@@ -12,5 +12,12 @@
     <p>
       <%= link_to t('try_free'), new_user_registration_path, class:"primary-button" %>
     </p>
+    <hr />
+    <p class="lead">
+      Bereits registriert?
+    </p>
+    <p>
+      <%= link_to t('login'), new_user_session_path, class:"primary-button" %>
+    </p>
     </main>
     <% end %>
