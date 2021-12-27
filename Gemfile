@@ -10,7 +10,7 @@ gem 'devise-i18n'
 gem 'simple_form'
 gem 'devise'
 gem 'sassc', '~> 2.1.0'
-#gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 gem 'meta-tags'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
