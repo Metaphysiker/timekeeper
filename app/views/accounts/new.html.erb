@@ -1,5 +1,4 @@
-<h1>New Account</h1>
-
-<%= render 'form', account: @account %>
-
-<%= link_to 'Back', accounts_path %>
+<div class="container">
+  <h1><%= Account.human_attribute_name("add", account: Account.model_name.human) %></h1>
+  <%= render 'form', account: @account %>
+</div>
