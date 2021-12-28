@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_173945) do
+ActiveRecord::Schema.define(version: 2021_12_28_210036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2021_12_28_173945) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "account_id"
-    t.index ["account_id"], name: "index_accounts_on_account_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -35,10 +33,15 @@ ActiveRecord::Schema.define(version: 2021_12_28_173945) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "name", default: ""
-    t.string "email", default: ""
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_companies_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
   create_table "roles", force: :cascade do |t|
@@ -87,5 +90,4 @@ ActiveRecord::Schema.define(version: 2021_12_28_173945) do
     t.index ["account_id"], name: "index_work_times_on_account_id"
   end
 
-  add_foreign_key "accounts", "accounts"
 end

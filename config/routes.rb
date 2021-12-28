@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :companies
   get 'admin_area/users'
   resources :select_options
   resources :categories
@@ -20,7 +19,8 @@ Rails.application.routes.draw do
 
 
   resources :work_times
-  devise_for :users
+  devise_for :users, path: "users"
+  devise_for :companies, path: "companies"
   root 'static_pages#welcome'
   get 'static_pages/welcome'
   get 'static_pages/pricing', as: "pricing"
