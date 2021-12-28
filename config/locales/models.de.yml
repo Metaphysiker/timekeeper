@@ -16,7 +16,21 @@ de:
       select_option:
         one: "Auswahl-Option"
         other: "Auswahl-Optionen"
+      company:
+        one: "Firma"
+        other: "Firmen"
     attributes:
+      company:
+        enter: "%{company} eintragen"
+        add: "%{company} hinzufügen"
+        edit: "%{company} bearbeiten"
+        name: "Name"
+        email: "e-Mail"
+        name_placeholder: "z.B. Firma Alpha, Unternehmen Beta, Verein Gamma"
+        email_placeholder: "z.B. max.muster@gmail.com"
+        created_successfully: "wurde erfolgreich eingetragen."
+        updated_successfully: "wurde erfolgreich bearbeitet."
+        destroyed_successfully: "wurde erfolgreich gelöscht."
       select_option:
         enter: "%{select_option} eintragen"
         add: "%{select_option} hinzufügen"

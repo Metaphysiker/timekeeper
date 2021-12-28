@@ -1,0 +1,4 @@
+<main class="container main_left">
+  <h1><%= Company.human_attribute_name("edit", company: Company.model_name.human) %></h1>
+  <%= render 'companies/form', company: @company %>
+</main>

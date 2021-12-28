@@ -1,0 +1,11 @@
+<main class="main_left">
+  <h1><%= @company.name %></h1>
+
+<p>
+  <strong>Email:</strong>
+  <%= @company.email %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
+</main>

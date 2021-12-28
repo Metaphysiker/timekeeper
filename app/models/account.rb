@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
   belongs_to :user
+  belongs_to :company, optional: true
   has_many :work_times
   has_many :categories
 
