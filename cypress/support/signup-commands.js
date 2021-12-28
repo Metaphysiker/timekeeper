@@ -21,7 +21,7 @@ Cypress.Commands.add('sign_up_and_go_to_personal_account', (user) => {
     cy.contains(de["de"]["personal_account"]).should("be.visible").click();
   });
 
-  cy.get("[data-cy=select_account]").first().click();
+  //cy.get("[data-cy=select_account]").first().click();
 
 
 
