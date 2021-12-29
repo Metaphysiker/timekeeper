@@ -58,6 +58,7 @@ de:
         add: "%{account} hinzufügen"
         edit: "%{account} bearbeiten"
         name: "Name"
+        work_load: "Arbeitspensum"
         edit_account: "Konto bearbeiten"
         create_new_account: "Neues Konto erstellen"
       work_time:

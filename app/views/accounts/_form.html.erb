@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%= f.input :work_load %>
 
     <% user = user.blank? ? current_user : user.id %>
     <%= f.hidden_field :user_id, value: user.id %>
