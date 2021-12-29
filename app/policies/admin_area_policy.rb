@@ -7,8 +7,6 @@ class AdminAreaPolicy < ApplicationPolicy
   end
 
   def users?
-    puts "Company: "
-    puts user.inspect
     user.admin?
   end
 
