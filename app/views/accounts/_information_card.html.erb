@@ -10,7 +10,7 @@
           <br />
           <%= t("this_year") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_year..Date.today.end_of_year).sum(:minutes)) %> / <%= WorkTime.in_hours(Account.calculate_work_load_in_duration(account.work_load_per_week, Date.today.beginning_of_year, Date.today.end_of_year)) %>
           <br />
-          <%= t("altogether").capitalize %>: <%= WorkTime.in_hours(account.work_times.sum(:minutes)) %> 
+          <%= t("altogether").capitalize %>: <%= WorkTime.in_hours(account.work_times.sum(:minutes)) %> / <%= WorkTime.in_hours(Account.calculate_work_load_in_duration(account.work_load_per_week, account.work_times.order(:datetime).first.datetime.to_date, account.work_times.order(:datetime).last.datetime.to_date)) unless account.work_times.empty? %>
         </p>
       </div>
       <div class="col-12 col-sm-6">
