@@ -131,6 +131,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :text, :work_load, :user_id)
+      params.require(:account).permit(:name, :text, :work_load_per_week, :user_id)
     end
 end

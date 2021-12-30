@@ -4,6 +4,10 @@ class Account < ApplicationRecord
   has_many :work_times
   has_many :categories
 
+  def self.calculate_work_load_in_duration(work_load, start_date, end_date)
+    work_load*((end_date - start_date).to_f / 7)
+  end
+
   def area_chart_data(start_date: nil, end_date: nil, interval: nil)
 
     return [{date: Date.today.to_s, minutes: 0}] if self.work_times.empty?
