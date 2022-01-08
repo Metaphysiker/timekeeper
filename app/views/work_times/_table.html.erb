@@ -5,6 +5,7 @@
         <th scope="col"><%= WorkTime.human_attribute_name("created_at") %></th>
         <th scope="col"><%= WorkTime.human_attribute_name("task") %></th>
         <th scope="col"><%= WorkTime.human_attribute_name("time") %></th>
+        <th scope="col"><%= WorkTime.human_attribute_name("time_in_minutes") %></th>
         <% account.categories.each do |category| %>
           <th scope="col"><%= category.name %></th>
         <% end %>
@@ -19,6 +20,7 @@
         <td><%= l(work_time.datetime, format: :short) %></td>
         <td><%= work_time.task %></td>
         <td><%= WorkTime.in_hours(work_time.minutes) %></td>
+        <td><%= work_time.minutes %></td>
         <% account.categories.each do |category| %>
           <td data-category="<%= category.name %>"><%= work_time.categories[category.name] unless work_time.categories[category.name].blank? %></td>
         <% end %>
@@ -41,6 +43,9 @@
         <% sum_of_all_minutes = WorkTime.where(account_id: account.id).where(datetime: earliest_work_time..latest_work_time).sum(:minutes) %>
         <td>
           <%= WorkTime.in_hours(sum_of_all_minutes) %>
+        </td>
+        <td>
+          <%= sum_of_all_minutes %>
         </td>
         <% account.categories.each do |category| %>
           <td></td>

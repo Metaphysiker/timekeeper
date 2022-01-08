@@ -65,6 +65,7 @@ de:
         datetime: "Datum"
         created_at: "Datum"
         time: "Zeit"
+        time_in_minutes: "Zeit in Minuten"
         in_hours: "in Stunden"
         task: "Erledigte Aufgabe"
         tasks: "Aufgaben"
