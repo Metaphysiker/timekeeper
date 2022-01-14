@@ -4,6 +4,8 @@
     <div class="row">
       <div class="col-12 col-sm-6">
         <p class="card-text">
+          <%= t("today") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today..Date.today + 1.day).sum(:minutes)) %> / <%= WorkTime.in_hours(account.work_load_per_week/7) %>
+          <br />
           <%= t("this_week") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_week..Date.today.end_of_week).sum(:minutes)) %> / <%= WorkTime.in_hours(account.work_load_per_week) %>
           <br />
           <%= t("this_month") %>: <%= WorkTime.in_hours(account.work_times.where(datetime: Date.today.beginning_of_month..Date.today.end_of_month).sum(:minutes)) %> / <%= WorkTime.in_hours(account.work_load_per_week*(((Date.today.end_of_month - Date.today.beginning_of_month).to_f / 7).round(2))) %>
