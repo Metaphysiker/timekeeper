@@ -1,14 +1,24 @@
 {
-  "application.js": "/packs/js/application-ecd53ee7e0df512bba98.js",
-  "application.js.map": "/packs/js/application-ecd53ee7e0df512bba98.js.map",
+  "application.css": "/packs/css/application-e6c19da4.css",
+  "application.js": "/packs/js/application-9bfb0825ca8b037495de.js",
+  "application.js.map": "/packs/js/application-9bfb0825ca8b037495de.js.map",
   "entrypoints": {
     "application": {
+      "css": [
+        "/packs/css/application-e6c19da4.css"
+      ],
       "js": [
-        "/packs/js/application-ecd53ee7e0df512bba98.js"
+        "/packs/js/application-9bfb0825ca8b037495de.js"
       ],
       "js.map": [
-        "/packs/js/application-ecd53ee7e0df512bba98.js.map"
+        "/packs/js/application-9bfb0825ca8b037495de.js.map"
       ]
     }
-  }
+  },
+  "media/images/ui-icons_444444_256x240.png": "/packs/media/images/ui-icons_444444_256x240-d1b81858.png",
+  "media/images/ui-icons_555555_256x240.png": "/packs/media/images/ui-icons_555555_256x240-35d57320.png",
+  "media/images/ui-icons_777620_256x240.png": "/packs/media/images/ui-icons_777620_256x240-f423048b.png",
+  "media/images/ui-icons_777777_256x240.png": "/packs/media/images/ui-icons_777777_256x240-f5d5fce2.png",
+  "media/images/ui-icons_cc0000_256x240.png": "/packs/media/images/ui-icons_cc0000_256x240-5cbbd560.png",
+  "media/images/ui-icons_ffffff_256x240.png": "/packs/media/images/ui-icons_ffffff_256x240-92bef7e4.png"
 }
