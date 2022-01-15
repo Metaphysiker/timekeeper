@@ -11,6 +11,8 @@ import "jquery"
 //import "jquery-ui"
 import "jquery-ui/ui/widgets/datepicker.js"
 import "d3/dist/d3.js"
+import "jquery-ui/themes/base/all.css";
+
 
 Rails.start()
 ActiveStorage.start()
