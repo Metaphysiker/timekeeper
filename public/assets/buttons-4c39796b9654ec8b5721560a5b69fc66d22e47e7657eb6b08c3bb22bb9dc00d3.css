@@ -1,0 +1,181 @@
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-a-color {
+  background-color: #026670 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-a-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-b-color {
+  background-color: #9FEDD7 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-b-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-c-color {
+  background-color: #FEF9C7 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-c-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-d-color {
+  background-color: #FCE181 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-d-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-e-color {
+  background-color: #EDEAE5 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-e-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-f-color {
+  background-color: #808080 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-f-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 5, app/assets/stylesheets/buttons.scss */
+.btn-g-color {
+  background-color: #0394a2 !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 10, app/assets/stylesheets/buttons.scss */
+.btn-g-color:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* line 28, app/assets/stylesheets/buttons.scss */
+.primary-button {
+  color: white;
+  font-size: 1rem;
+}
+
+/* line 39, app/assets/stylesheets/buttons.scss */
+.primary-button:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* line 46, app/assets/stylesheets/buttons.scss */
+.secondary-button {
+  color: white;
+}
+
+/* line 55, app/assets/stylesheets/buttons.scss */
+.secondary-button:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* line 62, app/assets/stylesheets/buttons.scss */
+.account-button {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* line 74, app/assets/stylesheets/buttons.scss */
+.account-button:hover {
+  color: black;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* line 81, app/assets/stylesheets/buttons.scss */
+.account-buttonx {
+  color: black;
+}
+
+/* line 89, app/assets/stylesheets/buttons.scss */
+.account-buttonx:hover {
+  color: black;
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+
+/* line 96, app/assets/stylesheets/buttons.scss */
+.date_range_button {
+  color: white;
+  font-size: 0.8rem;
+}
+
+/* line 107, app/assets/stylesheets/buttons.scss */
+.date_range_button:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* line 114, app/assets/stylesheets/buttons.scss */
+.action_button {
+  color: white;
+  font-size: 0.8rem;
+}
+
+/* line 125, app/assets/stylesheets/buttons.scss */
+.action_button:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* line 132, app/assets/stylesheets/buttons.scss */
+.action_delete_button {
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+}
+
+/* line 144, app/assets/stylesheets/buttons.scss */
+.action_delete_button:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
